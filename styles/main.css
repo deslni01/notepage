@@ -1,0 +1,123 @@
+html, body {
+    min-width: 290px;
+    
+}
+
+#navbar {
+    background-color: rgb(209, 209, 209);
+    width: 250px;
+    border-right: 2px solid black;
+    text-align: justify;
+    padding-top: 25px;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+}
+
+#navbar header {
+    text-align: center;
+    font-weight: none;
+    text-decoration: none;
+    font-size: 23px;
+}
+
+#navbar li {
+    line-height: 50px;
+    list-style: none;
+    border-bottom: 1px solid black;
+    width: 100%;
+    
+}
+
+#navbar a {
+    text-decoration: none;
+    color: black;
+}
+
+#navbar a:hover {
+    text-decoration: underline;
+}
+
+
+#main-doc {
+    background-color: rgb(228, 228, 228);
+    position: absolute;
+    margin-left: 244px;
+    padding-top: 20px;
+    padding-left: 10px;
+    top: 0px;
+    line-height: 1.5;
+}
+
+p {
+    padding: 0 0 0 30px;
+    font-size: 15px;
+}
+
+header {
+    font-size: 25px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+h2 {
+    padding-left: 20px;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#main-doc li {
+    list-style: none;
+    line-height: 30px;
+}
+
+/* indent lists */
+.indent {
+    padding-left: 20px;
+}
+
+code {
+    display: block;
+    text-align: left;
+    white-space: pre;
+    position: relative;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 2;
+    background-color: #f1f1f1;
+    margin: 15px 10px 20px 50px;
+    border-radius: 5px;
+    
+  }
+
+span {
+    font-weight: bold;
+    text-decoration: underline;
+}
+  
+@media (max-width: 815px) {
+    /* For mobile phones */
+
+    #navbar ul {
+        border: 1px solid;
+        height: 275px;
+    }
+
+    #navbar {
+        position: absolute;
+        top: 0;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        max-height: 320px;
+        border-bottom: 1px solid black;
+    }
+
+    #main-doc {
+        position: relative;
+        margin-left: 0px;
+        margin-top: 325px;
+    }
+}
