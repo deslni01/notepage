@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Technical Document</title>
+    <title>Nick's Condensed JavaScript Notes</title>
     <!-- <link rel="stylesheet" type="text/css" href="styles/reset.css"> -->
     <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
@@ -13,75 +13,130 @@
         <header>JS Documentation</header>
             <ul>
                 <li><a class="nav-link" href="#introduction">Introduction</a></li>
+                <li><a class="nav-link" href="numbers">Numbers</a></li>
                 <li><a class="nav-link" href="#variables">Variables</a></li>
-                <li><a class="nav-link" href="#constants">Constants</a></li>
                 <li><a class="nav-link" href="#data_types">Data Types</a></li>
-                <li><a class="nav-link" href="#reference">Reference</a></li>
+                <li><a class="nav-link" href="#functions">Functions</a></li>
+                <li><a class="nav-link" href="#arrays">Arrays</a></li>
+                <li><a class="nav-link" href="#loops">Loops</a></li>
+                <li><a class="nav-link" href="#dom-manip">DOM manipulation</a></li>
+                <li><a class="nav-link" href="#objects">Objects</a></li>
+                <li><a class="nav-link" href="#best-practices">Best Practices</a></li>
             </ul>
         </header>
     </nav>
     <main id="main-doc">
         <div>
             <section id="introduction" class="main-section">
-                <header>Introduction</header>
-                
-                <h2>info #2</h2>
-                <p>info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 <span>test</span> info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 </p>
-                <code>
-                    const person1 = {
-                        name: 'Chris',
-                        greeting: function() {
-                            alert('Hi! I\'m ' + this.name + '.');
-                        }
-                    }
-                    
-                    const person2 = {
-                        name: 'Deepti',
-                        greeting: function() {
-                            alert('Hi! I\'m ' + this.name + '.');
-                        }
-                    }           
-                </code>
+                <header>Introduction</header>                
+                    <h2>info #2</h2>
+                        <p>info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 <span>test</span> info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 info #1 </p>
+                        <p>info #2</p>
+                        <p class="indent">info #2.5</p>
+                        <p>Maybe I'm going to show <code>some example code</code> here as a test or an example</p>
+                    <pre>
+                    <code>
+            const person1 = {
+                name: 'Chris',
+                greeting: function() {
+                    alert('Hi! I\'m ' + this.name + '.');
+                }
+            }
+
+            const person2 = {
+                name: 'Deepti',
+                greeting: function() {
+                    alert('Hi! I\'m ' + this.name + '.');
+                }
+            }           
+                     </code></pre>
             </section>
+
+            <section id="numbers" class="main-section">
+                <header>Numbers</header>
+                <h2>Basics</h2>
+                    <p>testing paragraph tag</p>
+                    <h3>testing h3 tag</h3>
+                <h2>Arithmetic</h2>
+                    <p></p>
+                    <h3>Operators</h3>
+            </section>
+
             <section id="variables" class="main-section">
-                <header>Variables</header>                
-                <p>info #1</p>
-                <p>info #2</p>
-                <code>
-                    some code here
-                    more here
-                    and maybe more here      
-                </code>
+                <header>Variables</header>     
+                <h2>Basics</h2>
+                    <p>info #1</p>
+                    <p>info #2</p>
+                <pre><code>
+            some code here
+            more here
+            and maybe more here      
+                </code></pre>
+                <h2>Constants</h2>
+                <h2>Naming</h2>
             </section>
-            <section id="constants" class="main-section">
-                <header>Constants</header>
-                <p>info #2</p>
-                <p>info #1</p>
-                <p>info #2</p>
-                <code>
-                    some code here
-                    more here
-                    and maybe more here            
-                </code>
-            </section>
+
             <section id="data_types" class="main-section">
                 <header>Data Types</header>
-                <p>info #2</p>
-                <p>info #1</p>
-                <p>info #2</p>
+                <h2>Basics</h2>
+                    <p>info #2</p>
+                    <p>info #1</p>
+                    <p>info #2</p>
+                    <pre>
                 <code>
                     some code here
                     more here
                     and maybe more here            
-                </code>
-                <code>
+                </code></pre>
+                <pre><code>
                     some code here
                     more here
                     and maybe more here            
-                </code>
+                </code></pre>
+                <h2>Strings</h2>
+                    <h3>String Methods and Properties</h3>
+                <h2>Conditionals</h2>
+                    <h3>if else; else if</h3>
+                    <h3>Logical operators</h3>
+
             </section>
-            <section id="reference" class="main-section">
-                <header>Reference</header>
+
+            <section id="functions" class="main-section">
+                <header>Functions</header>
+                <h2>Basics</h2>
+                <h2>Expressions</h2>
+                <h2>Arrow Functions</h2>
+            </section>
+
+            <section id="arrays" class="main-section">
+                <header>Arrays</header>
+                <h2>Basics</h2>
+            </section>
+
+            <section id="loops" class="main-section">
+                <header>Loops</header>
+                <h2>Basics</h2>
+                <h2>For loop</h2>
+                <h2>while / do ... while loop</h2>
+            </section>
+
+            <section id="dom-manip" class="main-section">
+                <header>DOM Manipulation</header>
+                <h2>Basics</h2>
+                <h2>DOM Methods</h2>
+            </section>
+
+            <section id="objects" class="main-section">
+                <header>Objects</header>
+                <h2>Basics</h2>
+                <h2>Bracket Notation</h2>
+                <h2>Dot Notation</h2>
+            </section>
+
+            <section id="best-practices" class="main-section">
+                <header>Best Practices</header>
+                <h2>Pseudo Code</h2>
+                <h2>Clean Code</h2>
                     <ul>
                         <li>something</li>
                         <li>something</li>
@@ -107,8 +162,60 @@ Basic text notes:
     <p>info for sub-header</p>
 <h2>info #2</h2>
     <p>info for sub-header</p>
+    <p class="indent">indented further for sub-points</p>
+
+<span> for keywords
+
+<code> for code blocks inline
+    <pre><code> for code blocks multiline
+
+Throw in a <ul> as needed for additional info?
+-->
+
+<!-- 
+Layout/topics:
+- Numbers
+    - Basics
+    - Arithmetic
+        - Operators
+    
+- Variables
+    - Basics
+        - Constants
+        - Naming
+
+- Data Types
+    - Basics
+    - Strings
+        - Methods and Properties
+    - Conditionals
+        - if else; else if
+        - logical operators
+
+- Functions
+    - Basics
+    - Expressions   
+    - Arrow functions
+
+- Arrays
+    - Basics
+
+- Loops
+    - Basics
+    - for loop
+    - while/do ... while loop
+
+- DOM manipulation
+    - Basics
+    - DOM methods
+
+- Objects
+    - Basics
+    - bracket notation
+    - dot notation
 
 
 
-
+- Pseudo code, etc. (Pg 16-20)
+- Clean code (Pg 20-22)
 -->

@@ -3,6 +3,15 @@ html, body {
     
 }
 
+::selection {
+    color: #f1f1f1; /* WebKit/Blink Browsers */
+    background:rgb(255, 68, 68);
+}
+::-moz-selection {
+    color: #f1f1f1; /* Gecko Browsers */
+    background:rgb(255, 68, 68);
+}
+
 #navbar {
     background-color: rgb(209, 209, 209);
     width: 250px;
@@ -37,6 +46,7 @@ html, body {
 
 #navbar a:hover {
     text-decoration: underline;
+    color: rgb(255, 68, 68);
 }
 
 
@@ -48,10 +58,15 @@ html, body {
     padding-left: 10px;
     top: 0px;
     line-height: 1.5;
+
+}
+
+section {
+    border-bottom: 1px solid rgb(114, 114, 114);
 }
 
 p {
-    padding: 0 0 0 30px;
+    padding: 0 0 0 35px;
     font-size: 15px;
 }
 
@@ -68,6 +83,10 @@ h2 {
     font-size: 20px;
 }
 
+h3 {
+    padding-left: 30px;
+}
+
 #main-doc li {
     list-style: none;
     line-height: 30px;
@@ -75,26 +94,35 @@ h2 {
 
 /* indent lists */
 .indent {
-    padding-left: 20px;
+    margin-top: -15px;
+    padding-left: 50px;
 }
 
-code {
+pre {
     display: block;
     text-align: left;
     white-space: pre;
     position: relative;
     word-break: normal;
     word-wrap: normal;
-    line-height: 2;
+    line-height: 1.5;
     background-color: #f1f1f1;
-    margin: 15px 10px 20px 50px;
+    color:rgb(255, 68, 68);
+    margin: 15px 10px 20px 40px;
     border-radius: 5px;
-    
-  }
+}
+
+code {
+    background-color: #f1f1f1;
+    color: rgb(255, 68, 68);
+    font-family: monospace;
+    font-size: 14px;
+}
 
 span {
     font-weight: bold;
     text-decoration: underline;
+    color: rgb(255, 68, 68);
 }
   
 @media (max-width: 815px) {
