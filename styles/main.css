@@ -1,6 +1,7 @@
 html, body {
     min-width: 290px;
-    
+    max-width: 100%;
+    background-color: rgb(228, 228, 228);
 }
 
 ::selection {
@@ -58,7 +59,7 @@ html, body {
     padding-left: 10px;
     top: 0px;
     line-height: 1.5;
-
+    width: 89%;
 }
 
 section {
@@ -110,6 +111,7 @@ pre {
     color:rgb(255, 68, 68);
     margin: 15px 10px 20px 40px;
     border-radius: 5px;
+    max-width: 1000px;
 }
 
 code {
