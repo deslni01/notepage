@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 html, body {
     min-width: 290px;
     max-width: 100%;
     background-color: rgb(228, 228, 228);
+    font-family: 'Roboto', sans-serif;
 }
 
 ::selection {
@@ -42,7 +45,8 @@ html, body {
 
 #navbar img {
     position: fixed;
-    bottom: -45px;
+    transform: scale(.5);
+    bottom: -180px;
 }
 
 #navbar a {
