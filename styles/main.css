@@ -47,6 +47,7 @@ html, body {
     position: fixed;
     transform: scale(.5);
     bottom: -180px;
+    left: -90px;
 }
 
 #navbar a {
