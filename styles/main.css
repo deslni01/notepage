@@ -47,9 +47,12 @@ html, body {
 
 #navbar img {
     position: fixed;
-    transform: scale(.5);
+    transform: scale(.7);
+    /* transform: scale(.5);
     bottom: -180px;
-    left: -90px;
+    left: -90px; */
+    bottom: -120px;
+    left: -60px;
 }
 
 #navbar a {
