@@ -3,8 +3,8 @@ Technical documentation page, used to condense and compile notes.
 # Things to add:
 
 - JavaScript page
-- Syntax highlighter for `<code>` blocks - [prism?](https://prismjs.com/#basic-usage)
-  - Inline Color & Match braces
+- ~~Syntax highlighter for `<code>` blocks - [prism?](https://prismjs.com/#basic-usage)~~
+  - ~~Inline Color & Match braces~~
 - Linkable keywords? 
 - HTML/CSS page
 - Markdown? [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
@@ -22,6 +22,7 @@ Technical documentation page, used to condense and compile notes.
  - Multi-cursor selection - alt + shift + up/down, then can add/edit multiple lines as needed!
  - Markdown preview: ctrl + k, v
  - Emmet syntax: type 'nav>ul>li' and it will auto-tag that into the file...
+   - [Emmet cheatsheet](https://docs.emmet.io/cheat-sheet/)
  - Git info/commands?
    - e.g. git init, always forget to add before commit which causes problems
  - etc.
