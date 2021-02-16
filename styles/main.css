@@ -46,11 +46,11 @@ html, body {
 }
 
 #navbar img {
-    position: fixed;
-    transform: scale(.7);
+    position: fixed;    
     /* transform: scale(.5);
     bottom: -180px;
     left: -90px; */
+    transform: scale(.7);
     bottom: -120px;
     left: -60px;
 }
@@ -177,5 +177,24 @@ span {
         left: 110px;
         top: 10px;
         transform: scale(.5);
+       
+    }
+}
+
+@media (max-height: 1080px) {
+    #navbar {
+        overflow: scroll;
+    }
+
+    #navbar img {
+        width: 100%;
+        height: auto;
+        position: relative;
+        /* left: 0px;
+        bottom: 0px;
+        margin-left: 0px;
+        padding-left: 0px; */
+        /* display: flex;
+        justify-content: flex-start; */
     }
 }

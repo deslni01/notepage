@@ -17,7 +17,8 @@
             <li><a class="nav-link" href="#introduction">Introduction</a></li>
             <li><a class="nav-link" href="#numbers">Numbers</a></li>
             <li><a class="nav-link" href="#variables">Variables</a></li>
-            <li><a class="nav-link" href="#data_types">Data Types</a></li>
+            <li><a class="nav-link" href="#data-types">Data Types</a></li>
+            <li><a class="nav-link" href="#strings">Strings</a></li>
             <li><a class="nav-link" href="#functions">Functions</a></li>
             <li><a class="nav-link" href="#arrays">Arrays</a></li>
             <li><a class="nav-link" href="#loops">Loops</a></li>
@@ -25,12 +26,21 @@
             <li><a class="nav-link" href="#objects">Objects</a></li>
             <li><a class="nav-link" href="#best-practices">Best Practices</a></li>
             <li><a class="nav-link" href="#problems">Problems</a></li>
+          
         </ul>
-        <img src="images/test.png">
+        <!-- 
+            <img src="images/test.png"> 
+            Does it make sense to put this as a li and add link to 'about'?
+        -->
+        <img src="images/test.png" alt="Author doing something shady">
         </header>
+        
     </nav>
     <main id="main-doc">
         <div>
+
+<!-- Introduction section -->
+
             <section id="introduction" class="main-section">
                 <header>Introduction</header>
                 <h2>The Purpose:</h2>
@@ -63,6 +73,8 @@
     thisShitIs; // "BANANAS"
                      </code></pre>
             </section>
+
+<!-- Numbers -->
 
             <section id="numbers" class="main-section">
                 <header>Numbers</header>
@@ -104,8 +116,6 @@
                 <p><span>isNaN()</span> is a global function used to find out if a variable is a number:
                     <code>var x = 100 / "Apple"; isNaN(x); // true</code>.
                 </p>
-
-
 
                 <h2>Arithmetic</h2>
 
@@ -258,44 +268,50 @@
 
             </section>
 
+<!-- Variables -->
+
             <section id="variables" class="main-section">
                 <header>Variables</header>
                 <h2>Basics</h2>
                 <p>info #1</p>
                 <p>info #2</p>
                 <pre><code>
-            some code here
-            more here
-            and maybe more here      
+    let user = 'John';
+    let age = 25;
+    let message = 'Hello';
+                </code></pre>
+                <p>Or:</p>
+                <pre><code>
+    let user = 'John',
+    age = 25,
+    message = 'Hello';
                 </code></pre>
                 <h2>Constants</h2>
                 <h2>Naming</h2>
             </section>
 
-            <section id="data_types" class="main-section">
+<!-- Data Types -->
+
+            <section id="data-types" class="main-section">
                 <header>Data Types</header>
                 <h2>Basics</h2>
                 <p>info #2</p>
                 <p>info #1</p>
                 <p>info #2</p>
-                <pre>
-                <code>
-                    some code here
-                    more here
-                    and maybe more here            
-                </code></pre>
-                <pre><code>
-                    some code here
-                    more here
-                    and maybe more here            
-                </code></pre>
-                <h2>Strings</h2>
-                <h3>String Methods and Properties</h3>
+            </section>
+
+<!-- Strings -->
+                
+            <section id="strings" class="main-section"></section>
+                <header>Strings</header>
+                <h2>String Methods and Properties</h2>
                 <h2>Conditionals</h2>
                 <h3>if else; else if</h3>
                 <h3>Logical operators</h3>
 
             </section>
+
+<!-- Functions -->
 
             <section id="functions" class="main-section">
                 <header>Functions</header>
@@ -304,10 +320,14 @@
                 <h2>Arrow Functions</h2>
             </section>
 
+<!-- Arrays -->
+
             <section id="arrays" class="main-section">
                 <header>Arrays</header>
                 <h2>Basics</h2>
             </section>
+
+<!-- Loops -->
 
             <section id="loops" class="main-section">
                 <header>Loops</header>
@@ -316,11 +336,15 @@
                 <h2>while / do ... while loop</h2>
             </section>
 
+<!-- DOM Manipulation -->
+
             <section id="dom-manip" class="main-section">
                 <header>DOM Manipulation</header>
                 <h2>Basics</h2>
                 <h2>DOM Methods</h2>
             </section>
+
+<!-- Objects -->
 
             <section id="objects" class="main-section">
                 <header>Objects</header>
@@ -328,6 +352,8 @@
                 <h2>Bracket Notation</h2>
                 <h2>Dot Notation</h2>
             </section>
+
+<!-- Best Practices -->
 
             <section id="best-practices" class="main-section">
                 <header>Best Practices</header>
@@ -341,6 +367,8 @@
                     <li>something</li>
                 </ul>
             </section>
+
+<!-- Problems? Function library? -->
 
             <section id="problems" class="main-section">
                 <header>Problems and Solutions</header>
