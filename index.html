@@ -273,8 +273,12 @@
             <section id="variables" class="main-section">
                 <header>Variables</header>
                 <h2>Basics</h2>
-                <p>info #1</p>
-                <p>info #2</p>
+                <p>
+                    <span>Variables</span> store goodies, data, visitors, etc. with <code>let</code> - <code>let message = "hello"</code>. 
+                </p>
+                <p>
+                    When storing multiple variables, best to store on individual lines for readability:
+                </p>
                 <pre><code>
     let user = 'John';
     let age = 25;
@@ -286,8 +290,68 @@
     age = 25,
     message = 'Hello';
                 </code></pre>
-                <h2>Constants</h2>
+                <p>
+                    <code>var</code> is an older way to declare variables, but for now stick with <code>let</code>. 
+                </p>
+                <p>
+                    Note you can declare multiple variables and copy data from one to another, but cannot declare the same variable twice with different data:
+                </p>
+                <pre><code>
+    let hello = "Hello world";
+    let message;
+    let message = hello;
+    message // "Hello world"
+
+    let message = 'this';
+    let message = 'that'; // syntax error 
+                </code></pre>
+
                 <h2>Naming</h2>
+                <p>
+                    Naming in JS has several limitations: 
+                    <ul>
+                        <li>
+                            only letters, digits, or the symbols <code>$</code> and <code>_</code>
+                        </li>
+                        <li>
+                            the first character cannot be a digit
+                        </li>
+                        <li>
+                            reserved names like <code>let</code>, <code>class</code>, <code>return</code>, etc. cannot be used
+                        </li>
+                    </ul>
+
+                </p>
+                <p>
+                    <span>camelCase</span> is used, case matters (e.g. <code>apple</code> and <code>appLe</code> are different), and should have a clean, obvious meaning:
+                        <ul>
+                            <li>
+                                Use human-readable names: <code>userName</code>, <code>shoppingCart</code>, <code>newUser</code>, etc.
+                            </li>
+                            <li>
+                                Stay away from abbreviations or short names: <code>a</code>, <code>mug</code>, etc.
+                            </li>
+                        </ul>
+                </p>                
+
+                <h2>Constants</h2>
+                <p>
+                    Unchanging variables can be declared with <code>const</code> rather than <code>let</code>: <code>const myBirthday = '10.24'1985';</code>. Trying to reassign a <code>const</code> returns an error
+                </p>
+                <p>
+                    <span>aliases</span> can be indicated with uppercase constants, for difficult-to-remember values, using capitals and underscores:
+                </p>
+                <pre><code>
+    const COLOR_RED = '#F00';
+    const COLOR_GREEN = '#0F0';
+
+    let color = COLOR_RED;
+                </code></pre>
+                <p>
+                    This can help make it easier to choose colors, prevent typos, or make document-wide changes.
+                </p>
+
+
             </section>
 
 <!-- Data Types -->
@@ -295,20 +359,410 @@
             <section id="data-types" class="main-section">
                 <header>Data Types</header>
                 <h2>Basics</h2>
-                <p>info #2</p>
-                <p>info #1</p>
-                <p>info #2</p>
+                <p>
+                    There are 8 main <span>data types</span>, which can be put into a variable (<span>dynamically typed</span>):
+                    <ol>
+                        <li>
+                            <span>Number</span> - integer and floating point numbers, can use math operations
+                        </li>
+                            <ul>
+                                <li>
+                                    Special numeric values: <span>infinity</span>, <span>-infinity</span>, <span>NaN</span>
+                                </li>
+                            </ul>
+                        <li>
+                            <span>BigInt</span> - recently added to get over integer size issues for <span>numbers</span>
+                        </li>
+                            <ul>
+                                <li>
+                                    Created by adding <code>n</code>to end of an integer: <code>bigInt = 123456789101112131564984n</code>
+                                </li>
+                            </ul>
+                        <li>
+                            <span>String</span> - must be surrounded by quotes or <span>backticks</span>
+                        </li>
+                        <li>
+                            <span>Boolean</span> - <span>true</span> or <span>false</span>
+                        </li>
+                        <li>
+                            <span>Null</span> - represents nothing/empty/unknown
+                        </li>
+                        <li>
+                            <span>Undefined</span> - value is not assigned (variable is declared but not assigned
+                        </li>
+                        <li>
+                            <span>Objects</span> and <span>symbols</span> - 
+                        </li>
+                            <ul>
+                                <li>
+                                    <span>Object</span> is special, in that it is the only non-<span>primitive</span> datatype (can contain more than 1 'thing' (<span>string</span>, <span>number</span>, etc.); used to store collections of data and complex entities
+                                </li>
+                                <li>
+                                    <span>Symbol</span> is used to create unique identifiers for <span>objects</span>
+                                </li>
+                            </ul>
+                        <li>
+                            <span>Typeof</span> operator returns the type of argument, good for a quick check. <code>typeof x</code> and <code>typeof(x)</code> are the same.
+                        </li>
+                    </ol>
+                </p>
             </section>
 
 <!-- Strings -->
                 
-            <section id="strings" class="main-section"></section>
+            <section id="strings" class="main-section">
                 <header>Strings</header>
-                <h2>String Methods and Properties</h2>
-                <h2>Conditionals</h2>
-                <h3>if else; else if</h3>
-                <h3>Logical operators</h3>
+                <h2>Basics</h2>
+                <p>
+                    Use single or double quotes, or backticks, to surround a string; <span>escape notation</span> <code>\</code> used for internal apostrophes/quotes: <code>let bigMouth = 'I\'ve got no...';</code>
+                </p>
+                <p>
+                    <span>Concatenating strings</span> with <code>+</code> to join together; can repeat and mix variables and strings:
+                </p>
+                <pre><code>
+    let one = 'hello, ';
+    let multiple = one + one + one; // hello, hello, hello, 
 
+    // mixing strings and variables:
+    let response = one + 'I am fine - ' + question;
+                </code></pre>
+                <p>
+                    <span>Template literals/strings</span> is a newer way to provide easier-to-read strings, using backticks <code>` `</code> to wrap the entire string, and can include other variables/expressions with <code>${}</code> (<span>placeholder</span>):
+                </p>
+                <pre><code>
+    examReport = `You scored ${ examScore }/${ examHighestScore } (${ Math.round((examScore/examHighestScore*100))}. ${ examScore >= 49 ? ‘Well done, you passed!’ : ‘Bad luck, you didn\’t pass this time.’}`;
+                </code></pre>
+                <p>
+                    <span>Newline character</span> <code>\n</code> in traditional code is used to split a string over multiple lines:
+                </p>
+                <pre><code>
+    output = 'I like the song "' + song + '".\nI give it a score of ...';
+    //
+    I like the song Rosetta Stoned.
+    I give it a score of ... 
+                </code></pre>
+                <p>
+                    <span>Template literals</span> respect line breaks, so if code is written with two lines, it will output with two lines.
+                </p>
+
+                <h2>String Methods and Properties</h2>
+                    <h3>Basics</h3>
+                        <p>
+                            A <span>method</span> is a functionality built into a language or specific data types; these can be used on strings, such as <code>indexOf()</code>, <code>search()</code>, etc.
+                        </p>
+                        <p>
+                            Note: all string methods return a new string - they do not modify the original string. They are <span>immutable</span>.
+                        </p>
+                    <h3>Misc:</h3>
+                        <ul>
+                            <li>
+                                <code>.length</code> to determine string length: <code>var txt = "ababab"; var sln = txt.length; //  6</code>
+                            </li>
+                            <li>
+                                <code>.indexOf()</code> to find a text's starting <span>index</span> inside another string:
+                                <pre><code>
+    var str = 'banana eats';
+    var pos = str.indexOf('eats'); // 7
+                                </code></pre>                             
+                            </li>
+                            <li>
+                                <code>.lastIndexOf()</code> to find the last occurrence of a text - e.g. 'banana eats eats' would return the index of the second 'eats'
+                                <ul>
+                                    <li>Both return <code>-1</code> if the text is not found</li>
+                                    <li>Can specify the starting position/index (default 0) by inputting a second parameter: <code>str.indexOf('eats', 6);</code></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <code>.search()</code> to search for a string inside a string, which returns the position of the first occurrence of the specified text. 
+                            </li>
+                            <li>
+                                NOTE: <code>search()</code> cannot take a start-position parameter.  <code>indexOf()</code> cannot take regular expressions (<span>RegExp</span> - for text search/replace operations) as inputs/search values.
+                            </li>
+                        </ul>
+                    <h3>Extracting String Parts:</h3>
+                        <p>
+                            3 methods to extract part of a string:
+                        </p>
+                        <ul>
+                            <li>
+                                <code>slice(start, end)</code> extracts a part of a string and returns the extracted as a new string. If a parameter is negative, index is counted from end of string. If the second parameter is omitted, slices out the remainder of the string:
+                                <pre><code>
+    let str = "Apple, Banana, Kiwi";
+    let res = str.slice(7, 13); // Banana 
+
+    str.slice(-12, -6); // Banana 
+
+    str.slice(7) // Banana 
+                                </code></pre>
+                            </li>
+                            <li>
+                                <code>substring()</code> is similar to <code>slice()</code>, but cannot accept negative indices. If second parameter omitted, slices out the remainder of the string.
+                            </li>
+                            <li>
+                                <code>substr()</code> similar to <code>slice()</code>, but the second parameter specifies the length of what is extracted (e.g. <code>str.substr(7, 6)</code> starts at index 7 and slices next 6 indices). If second parameter is omitted, slices out rest of string; if first parameter is negative, counts from end of the string.
+                            </li>
+                        </ul>
+                    <h3>Replacing String Content:</h3>
+                        <ul>
+                            <li>
+                                <code>replace()</code> replaces (ha) a specified value with another value in a string:
+                                <pre><code>
+    str = "Please eat at Burt\'s";
+    let clocks = str.replace('Burt\'s', 'Clocks');
+    clocks; // "Please eat at Clocks"
+                                </code></pre>
+                            </li>
+                            <li>
+                                Does not change the string initially called on, but returns a new string. By default, replaces only the first match if duplicate text in string, and case sensitive!
+                                <ul>
+                                    <li>
+                                        An <span>insensitive RegExp</span> can replace case sensitivity with <code>/i</code> tag: <code>str.replace(/BURTS/i, 'Clocks');</code>
+                                    </li>
+                                    <li>
+                                        A <span>global RegExp</span> can replace ALL matches with <code>/g</code> tag: <code>str.replace(/Burts/g, 'Clocks')</code>.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    <h3>Converting to Upper/Lower case:</h3>
+                        <ul>
+                            <li>
+                                <code>toUpperCase()</code> and <code>toLowerCase()</code>, aptly named:
+                                <pre><code>
+    let text1 = "Hello World!";
+    let text2 = text1.toUpperCase(); // HELLO WORLD!
+
+    let text3 = text1.toLowerCase(); // hello world!
+                                </code></pre>
+                            </li>
+                        </ul>
+                    <h3>The <code>concat()</code> Method:</h3>
+                        <ul>
+                            <li>
+                                You know, another way to <span>concatenate</span>:
+                            </li>
+                            <pre><code>
+    let text1 = 'Hello';
+    let text2 = 'World';
+    let text3 = text1.concat(' ', text2);
+    text3 // Hello World
+
+    // Same result as:
+    text = 'Hello' + ' ' + 'World';
+    text // Hello World 
+                            </code></pre>
+                        </ul>
+                    <h3><code>trim():</code></h3>    
+                        <ul>
+                            <li>
+                                Removes whitespace from both sides of a string:
+                                <code>let str = '     Hello World!     ';</code>; alert(str.trim()); // Hello World!
+                            </li>
+                        </ul>
+                    <h3>Extracing String Characters:</h3>
+                        <p>3 methods to extract:</p>
+                        <ul>
+                            <li>
+                                <code>charAt()</code> returns the character at a specified <span>index</span> in a string:
+                                <ul>
+                                    <li>
+                                        <code>let str = "HELLO WORLD!"; str.charAt(0); // H</code>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <code>charCodeAt()</code> returns the <span>unicode</span> (UTF-16, an integer between 0-65535):
+                                <ul>
+                                    <li>
+                                        <code>str.charCodeAt(0); // 72</code>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span>Property Access</span> - ECMAScript 5 allows <code>[]</code> on strings, but may be unpredictable. Looks like an <span>array</span> but isn't; returns <span>undefined</span> if no character found, read only.
+                            </li>
+                        </ul>
+                    <h3>Converting a String to an Array:</h3>
+                        <ul>
+                            <li>
+                                <code>split()</code> method:
+                            </li>
+                            <pre><code>
+    let txt = "a, b, c, d, e"; // (a string)
+    txt.split(','); // Array(5) [ 'a', 'b', 'c', ... ]
+    txt.split(' '); //
+    txt.split('|'); // 
+                            </code></pre>
+                        </ul>
+
+                <h2>String Conditionals</h2>
+                    <p>
+                        <span>Comparisons</span>: <code>< > == !=</code> return a <span>boolean</span> result. Can even assign result as a variable: <code>let result = 5 > 4; alert( result ); // true </code>
+                    </p>
+                    <p>
+                        <span>String Comparison</span> - JS uses 'dictionary' or 'lexicographical' - e.g. strings compared letter by letter using the following algorithm:
+                        <ol>
+                            <li>
+                                Compare the first character of both strings.
+                            </li>
+                            <li>
+                                If 1st character from 1st string is greater than the other string's, the 1st string is greater and we're done. (Or vice-versa).
+                            </li>
+                            <li>
+                                Otherwise, if both 1st characters are the same, compare the 2nd characters the same way.
+                            </li>
+                            <li>
+                                Repeat until end of either string.
+                            </li>
+                            <li>
+                                If both end with the same length, then they are equal; otherwise the longer string is greater.
+                            </li>
+                            <li>
+                                Note: it's unicode order, which is close to alphabetical - but A is not equal to a!
+                            </li>
+                        </ol>
+                    </p>
+
+            </section>
+
+           
+<!-- Conditionals -->
+            
+            <section id="conditionals" class="main-section">
+                <header>Conditionals</header>
+                    <p>
+                        Ever want to perform different actions depending on different situations? Well, here you go!
+                    </p>
+
+                <h2>Conditional Statements</h2>
+
+                    <h3>if</h3>
+                        <p>
+                            <code>if</code> to specify a block of code to be executed IF a specified condition is true. 
+                        </p>
+                        <p>
+                            Evaluates a <span>condition</span> in parentheses, and if <span>true</span>, executes a block of code. Note <code>0 '' null undefined NaN</code> all become <span>falsy values</span>. 
+                        </p>
+                        <p>    
+                        Syntax:
+                            <pre><code>
+    if (condition) {
+        // block of code to execute if condition is true
+    }
+
+    // example:
+    if (hour < 18) {
+        greeting = "Good day";
+    }
+                            </code></pre>
+                        </p>
+                        <ul>
+                            <li>
+                                Can be combined with <span>question mark/ternary operator</span> <code>?</code> for a simple true/false check:
+                                <pre><code>
+    let result = condition ? value1 : value2;
+                                </code></pre>
+                            </li>
+                            <li>
+                                If the <span>condition</span> is <span>truthy</span>, executes <code>value1</code>, otherwise executes <code>value2</code>. 
+                            </li>
+                            <li>
+                                Can sometimes be used to replace <code>if</code>, but not recommended as it's less readable. Same as <code>if else</code>. 
+                            </li>
+                        </ul>
+                    <h3>else</h3>
+                        <p>
+                            <code>else</code> to specify a block of code to be executed if same condition is <span>false</span>.
+                        </p>
+                        <p>
+                            Syntax:
+                                <pre><code>
+    if (condition) {
+        // block of code
+    } else {
+        // block of code 
+    }                    
+    
+    // example:
+    if (hour < 18) {
+        greeting = "Good day";
+    } else {
+        greeting = "Good evening";
+    }
+                                </code></pre>
+                        </p>
+
+                    <h3>else if</h3>
+                        <p>
+                            <code>else if</code> to specify a new condition to test if the first is <span>false</span>.
+                        </p>
+                        <p>
+                            Syntax:
+                                <pre><code>
+    if (condition1) {
+        // block of code if condition1 = true 
+    } else if (condition2) {
+        // block of code if condition1 is false and condition2 is true 
+    } else {
+        // block of code if condition1 and condition2 are false 
+    }
+
+    // example:
+    if (time < 10) {
+        greeting = "Good morning";
+    } else if (time < 20) {
+        greeting = "Good day";
+    } else {
+        greeting = "Good evening";
+    }
+                                </code></pre>
+                        </p>
+
+                    <h3>switch</h3>
+                        <p>
+                            <code>switch</code> is an alternative to <code>if else</code> when there's too much code or the conditions are too complex - or where you just want to set the variable to a certain choice/value. 
+                        </p>
+                        <p>
+                            <span>switch statements</span> take a single expression/value as input and look through a number of choices (<span>switch ranges</span>) until a match is found and corresponding code is executed.
+                        </p>
+                        <p>
+                            Syntax:
+                                <pre><code>
+    switch (expression) {
+        case choice1:
+            // run this code
+            break;    
+        case choice2:
+            // run this code instead
+            break;    
+        // repeat as needed   
+        default:
+            // actually, just run this code
+    }
+    
+    // example:
+    
+    function setWeather() {
+        const choice = select.value;
+    
+        switch (choice) {
+            case 'sunny':
+                para.textContent = 'Wear Shorts!';
+                break;
+            case 'rainy':
+                para.textContent = 'Wear a raincoat!';
+                break;
+            case 'snowing':
+                para.textContent = 'Wear gloves!';
+                break;
+            default:
+                para.textContent = '';
+        }
+    }
+                                </code></pre>
+                        </p>
+
+                <h2>Logical operators</h2>
             </section>
 
 <!-- Functions -->
@@ -382,6 +836,9 @@
                         </code>
                     </pre>
             </section>
+
+<!-- Resources/Reference - link to all the articles -->
+
         </div>
     </main>
 

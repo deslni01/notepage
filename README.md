@@ -36,3 +36,6 @@ Technical documentation page, used to condense and compile notes.
 - ~~Menu is scuffed when minimal width - need to collapse menu?~~
   - Changed the media attributes for min-width and such; changed height of menu to be smaller, and set to sticky with z-index 1 to be on top at all times
 - ~~Change the Prism.css file to move the code blocks back~~
+- span vs code convention for keywords - first time using, use span, then code afterwards? Always code for any code-related words?
+- Second page with examples of more complex topics?
+- Keep an eye on load time, may need to break into different pages
