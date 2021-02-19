@@ -19,6 +19,7 @@
             <li><a class="nav-link" href="#variables">Variables</a></li>
             <li><a class="nav-link" href="#data-types">Data Types</a></li>
             <li><a class="nav-link" href="#strings">Strings</a></li>
+            <li><a class="nav-link" href="#conditionals">Conditionals</a></li>
             <li><a class="nav-link" href="#functions">Functions</a></li>
             <li><a class="nav-link" href="#arrays">Arrays</a></li>
             <li><a class="nav-link" href="#loops">Loops</a></li>
@@ -661,6 +662,55 @@
                                 Can be combined with <span>question mark/ternary operator</span> <code>?</code> for a simple true/false check:
                                 <pre><code>
     let result = condition ? value1 : value2;
+
+    // example:
+    let greeting = ( is Birthday ) ? 'happy birthday' : 'good morning';
+
+    // theme chooser:
+    const select = document.querySelector('select');
+    const html = document.querySelector('html');
+
+    function update(bgColor, textColor) {
+        html.style.backgroundColor = bgColor;
+        html.style.color = textColor;
+    }
+
+    select.onchange = function() {
+        ( select.value === 'black' ) ? update('black', 'white') : update('white', 'black');
+    }
+
+    // example:
+
+    let machineActive = true;
+    let pwd = 'cheese';
+
+    let machineResult;
+    let pwdResult;
+
+    if(machineActive === true) {
+        ( pwd === 'cheese' ) ? pwdResult = "Welcome!" : pwdResult = "No luck!";
+    } else {
+        machineResult = "Sorry, the machine is not on";
+    }
+
+    // example:
+
+    ( pwd === 'cheese' ) ? pwdResult = "Welcome!" : pwdResult = "No luck!";
+
+    // multiple ternary example:
+
+    let age = prompt('age?', 18);
+
+    let message = (age < 3) ? 'Hi, baby!' :
+        (age < 18) ? 'Hello!' :
+        (age < 100) ? 'Greetings!' : 
+        'What an unusual age!';
+
+    alert( message );
+
+    // if age < 3 = true, say 'Hi, baby!'; if false, then if age < 18 is true, 
+    // say 'Hello!', if false, then if age < 100, say 'Greetings!', if false, 
+    // then say 'What an unusual age!'
                                 </code></pre>
                             </li>
                             <li>
@@ -715,6 +765,17 @@
     } else {
         greeting = "Good evening";
     }
+
+    // example several options:
+    if (choice === 'sunny') {
+        para.textContent = 'Wear shorts!';
+    } else if (choice === 'rainy') {
+        para.textContent = 'Wear a raincoat!';
+    } else if (choice === 'snowing') {
+        para.textContent = 'Wear gloves!';
+    } else {
+        para.textContent = '';
+    }
                                 </code></pre>
                         </p>
 
@@ -759,10 +820,198 @@
                 para.textContent = '';
         }
     }
+
+    // example:
+
+    let response;
+    let score = 75;
+    let machineActive = false;
+
+    if(machineActive) {
+        
+        switch (true) {
+            case (score < 00 || score > 100):
+                response = "This is not possible, an error has occurred";
+                break;
+            case (score >= 0 && score < 20):
+                response = "That was a terrible score - total fail!";
+                break;
+            case (score >= 20 && score < 40):
+                response = "You know some things, but it's a pretty bad score. Needs improvement";
+                break;
+            case (score >= 40 && score < 70):
+                response = "You did a passable job, not bad!";
+                break;
+            case (score >= 70 && score < 90):
+                response = "That\'s a great score, you really know your stuff";
+                break;
+            case (score >= 90 && score < 101):
+                response = "What an amazing score! Did you cheat? Are you for real?"
+        }
+
+    } else {
+        response = 'The machine is turned off. Turn it on to process your score.';
+    }
                                 </code></pre>
                         </p>
 
                 <h2>Logical operators</h2>
+                    <p>
+                        There are 3 global operators in JS:
+                    </p>
+                    <h3>
+                        <code>||</code> <span>OR</span> - if any arguments are true, it returns <span>true</span>, otherwise returns <span>false</span>:
+                    </h3>
+                   
+                        <pre><code>
+    alert( true || true); // true 
+    alert( false || true); // true 
+    alert( true || false ); // true 
+    alert( false || false ); // false 
+
+    example:
+    if (iceCreamVanOutside || houseStatus === 'on fire') {
+        console.log('You should leave the house quickly');
+    } else {
+        console.log('Probably should just stay in then');
+    }
+                                </code></pre>
+
+                        <p>
+                            If <span>operand</span> is not <span>boolean</span>, it is converted for evaluation; 1 = true, 2 = false; <code>( 1 || 0 )</code> is the same as <code>( true || false )</code>.
+                        </p>
+                        <p>
+                            Mostly used with an <code>if</code> <span>statement</span> to test of any are <span>true</span>:
+                            <pre><code>
+    let hour = 9;
+    if (hour < 10 || hour > 18 ) {
+        alert( 'The office is closed.' );
+    }
+                            </code></pre>
+                        </p>
+                        <p>
+                            Can have multiple conditions - e.g. before 10, after 18, or weekend:
+                            <pre><code>
+    let hour = 12;
+    let isWeekend = true;
+    if (hour < 10 || hour > 18 || isWeekend) {
+        alert( 'The office is closed.' );
+    }
+                            </code></pre>
+                        </p>
+                        <p>
+                            <span>OR</span> finds the first <span>truthy</span> value:
+                            <ol>
+                                <li>
+                                    Evaluates from left to right.
+                                </li>
+                                <li>
+                                    For each <span>operand</span>, converts to <span>boolean</span>; if <span>true</span>, stops and returns the original value of <span>operand</span>. 
+                                </li>
+                                <li>
+                                    If all <span>operands</span> have been evaluated (ie all are false), returns the last <span>operand</span>. 
+                                </li>
+                                <li>
+                                    If all <span>false</span>, it returns the last value:
+                                </li>
+                                <pre><code>
+    let firstName = "";
+    let lastName = "";
+    let nickName = "";
+    alert( firstName || lastName || nickName || "Anonymous" ); // Anonymous 
+                                </code></pre>
+                            </ol>
+                                
+                        </p>
+                        <p>
+                            <span>Short-circuit evaluation</span> - once it sees <span>true</span>, it stops and returns that value and doesn't even look at other values:
+                        </p>
+                        <pre><code>
+    true || alert("not printed");
+    false || alert("printed");
+        // in the first line, <span>OR</span> saw <span>true</span> on the left so returns without even looking at alert("not printed");
+        // in the second line, <span>OR</span> saw <span>false</span>, so looked at it and returned the second line
+                        </code></pre>
+                        <p>
+                            Also need to make sure not to give a list to return true, must be specific:
+                        </p>
+                        <pre><code>
+    if (x === 5 || 7 || 10 || 20) {
+        // bad bad bad, won't work 
+    }
+
+    if (x === 5 || x === 7 || x === 10 || x === 20) {
+        // will compare each of these and execute code accordingly
+    }
+                        </code></pre>
+                    
+                <h3>
+                    <code>&&</code> <span>AND</span> - both operands have to be <span>true</span>, or returns <span>false</span>:
+                </h3>
+                    <pre><code>
+    alert( true && true ); // true 
+    alert( false && true ); // false 
+    alert( true && false ); // false 
+    alert( false && false ); // false
+
+    let hour = 12;
+    let minute = 30;
+    if (hour == 12 && minutes == 30) {
+        alert( 'The time is 12:30' );
+    }
+
+    // example:
+    if (choice === 'sunny' && temperature < 86) {
+        para.textContent = 'It is ' + temperature + ' degrees outside - nice and sunny';
+    } else if (choice === 'sunny' && temperature >= 86) {
+        para.textContent = 'It is ' + temperature + ' degrees outside - way too hot!';
+    }
+                    </code></pre>
+                    <p>
+                        <span>AND</span> finds the first <span>falsy</span> value:
+                        <ol>
+                            <li>
+                                Evaluates from left to right.
+                            </li>
+                            <li>
+                                Each <span>operand</span> converts to <span>boolean</span> - if result is <span>false</span>, stops and returns original value of that <span>operand</span>. 
+                            </li>
+                            <li>
+                                If all have been evaluated (and all <span>truthy</span>), returns the last <span>operand</span> - e.g. returns the first <span>falsy</span>, or the last value if no <span>false</span> is found 
+                            </li>
+                            <li>
+                                NOTE: precedence of <span>AND</span> is higher than <span>OR</span>: <code>a && b || c && d</code> -> the two <code>&&</code> comparisons are done first, then <code>||</code>.
+                            </li>
+                        </ol>
+
+                    </p>
+                
+                <h3>
+                    <code>!</code> <span>NOT</span> - <code>result = !value</code>
+                </h3>
+                    <ol>
+                        <li>
+                            Converts the <span>operand</span> to <span>boolean true/false</span>. 
+                        </li>
+                        <li>
+                            Returns the <span>inverse</span> value:
+                            <pre><code>
+    alert( !true ); // false
+    alert( !false ); // true 
+
+    example:
+    if (!(iceCreamVanOutside || houseStatus === 'on fire')) {
+        console.log('Probably should just stay in then.');
+} else {
+    console.log('You should leave the house quickly.');
+    }
+                            </code></pre>
+                        </li>
+                        <p>
+                            Highest precedence of all <span>logical operators</span> - execute first.
+                        </p>
+                    </ol>
+
             </section>
 
 <!-- Functions -->
