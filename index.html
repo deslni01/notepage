@@ -1002,8 +1002,8 @@
     example:
     if (!(iceCreamVanOutside || houseStatus === 'on fire')) {
         console.log('Probably should just stay in then.');
-} else {
-    console.log('You should leave the house quickly.');
+    } else {
+        console.log('You should leave the house quickly.');
     }
                             </code></pre>
                         </li>
@@ -1019,8 +1019,93 @@
             <section id="functions" class="main-section">
                 <header>Functions</header>
                 <h2>Basics</h2>
-                <h2>Expressions</h2>
-                <h2>Arrow Functions</h2>
+                    <p>
+                        Functions allow you to store a piece of code that does a single task, but call that code in a short command; Some functions are built-in to the browser and not part of the JS language.
+                    </p>
+                    <h3>Functions</h3> vs <h3>Methods</h3>
+                        <ul>
+                            <li>
+                                A <span>method</span> is a <span>function</span> that is part of an object - more later.
+                            </li>
+                            <li>
+                                <span>custom functions</span> are defined in the code, not built-in to the browser.
+                            </li>
+                            <li>
+                                <span>functions</span> can call inside other functions
+                            </li>
+                        </ul>
+                    <h3>Naming</h3>
+                        <p>
+                            <span>Functions</span> are actions, so name around verbs and provide a brief, accurate description:
+                        </p>
+                        <p>
+                            <code>showMessage(..)</code>, <code>getAge(..)</code>, <code>calcSum(..)</code>, etc.
+                        </p>
+                        <p>
+                            <span>Functions</span> should do what the name suggests! Two independent actions? Use two functions.
+                        </p>
+                    <h3>Invoking</h3>
+                        <p>
+                            Just run it using it's <code>name()</code>. 
+                        </p>
+                    <h3>Return values</h3>
+                <h2>Function types</h2>
+                    <h3>Function declaration</h3>
+                        <p>
+                            The standard function syntax, declared as a separate statement in main code flow. Can be called earlier than defined - JS prepares the script and looks for/creates <span>global functions</span> in an <span>initialization stage</span>. If located within a code block, it's visible everywher inside, but not outside.
+                        </p>
+                        <pre><code>
+    // syntax:
+    function sayHi() {
+        // code
+    }
+                        </code></pre>
+                    <h3>Function expression</h3>
+                        <p>
+                            Another syntax to create a function; created when execution reaches it and is usable only in that moment.
+                        </p>
+                        <pre><code>
+    // syntax:
+    let sayHi = function() {
+        // code 
+    }
+                        </code></pre>
+                    <h3>Choosing between <span>declaration</span> and <span>expression:</span></h3>
+                        <p>
+                            <span>Declaration syntax</span> allows more freedom in organizing the code, because they can be called before they're declared in the script, and is also better for readability.
+                        </p>
+                    <h3>Anonymous functions</h3>
+                        <p>
+                            A function with no name! Something something Jon Snow, I don't know, I never saw the show. Usually just use <code>function() { // code }</code>, and most often used with an <span>event handler</span>. 
+                        </p>
+                    <h3>Callback functions</h3>
+                        <p>
+                            Declaring a <span>function</span> inside a call, building <span>parameters</span> as functions. Pass a function and expect it called back later if necessary - see example html file 3. These <span>functions</span> are only inside the call - <span>hyper local</span>! 
+                        </p>
+                    <h3>Arrow functions</h3>
+                        <p>
+                            Often better than <span>expressions</span>; very convenient for simple one-line actions to not write so many words.
+                        </p>
+                        <ul>
+                            <li>
+                                <code>let func = (arg1, arg2, ...argN) => expression</code>
+                            </li>
+                            <li>
+                                If only one <span>argument</span>, can omit parens: <code>func = arg => expression</code>.
+                            </li>
+                            <li>
+                                If no <span>argument</span>, empty parens: <code>func = () => expression</code>.
+                            </li>
+                            <li>
+                                <span>multiline arrow functions</span> allow added complexity:
+                                <pre><code>
+    // example:
+                                </code></pre>
+                            </li>
+                        </ul>
+                <h2>Parameters</h2>
+                <h2>Scope and conflicts</h2>
+                
             </section>
 
 <!-- Arrays -->

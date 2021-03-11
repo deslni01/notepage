@@ -27,7 +27,9 @@ Technical documentation page, used to condense and compile notes.
  - Git info/commands?
    - e.g. git init, always forget to add before commit which causes problems
    - [Git cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf)
+   - [DOM Cheapsheet](https://fundamentals.generalassemb.ly/11_unit/dom-cheatsheet.html)
  - etc.
+ 
 
 # Things to fix:
 
