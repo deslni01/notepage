@@ -1022,7 +1022,7 @@
                     <p>
                         Functions allow you to store a piece of code that does a single task, but call that code in a short command; Some functions are built-in to the browser and not part of the JS language.
                     </p>
-                    <h3>Functions</h3> vs <h3>Methods</h3>
+                    <h3>Functions vs Methods</h3>
                         <ul>
                             <li>
                                 A <span>method</span> is a <span>function</span> that is part of an object - more later.
@@ -1232,8 +1232,80 @@
             <section id="loops" class="main-section">
                 <header>Loops</header>
                 <h2>Basics</h2>
+                    <p>
+                        A loop is useful to do the same thing over and over rapidly, repeating repetitive tasks, or <span>iterating</span>. 
+                    </p>
+                    <p>
+                        Features of a loop: 
+                        <ul>
+                            <li>
+                                <span>Counter</span> - initialized with a certain value; is the starting point 
+                            </li>
+                            <li>
+                                <span>Condition</span> - true/false to determine if the <span>loop</span> continues or stops.
+                            </li>
+                            <li>
+                                <span>Iterator</span> - generally <span>increments</span> (but can <span>decrement</span>) the <span>counter</span> by a small amount until the <span>condition</span> is no longer <code>true</code>
+                            </li>
+                        </ul>
+                    </p>
+                    <p>
+                        Which should you use? Whichever you prefer, they're largely interchangeable; most sources recommend the <span>for loop</span>, as it's easiest to remember and neater.
+                    </p>
                 <h2>For loop</h2>
-                <h2>while / do ... while loop</h2>
+                    <p>
+                        <span>For loops</span> consist of an <span>initializer</span>, <span>condition</span>, and <span>final-expression</span>, which is always evaluated each time the <span>loop</span> goes through a full <span>iteration</span> - usually <span>increment</span> or <span>decrement</span> (e.g. <code>i++</code>).
+                    </p>
+                    <h3>Exiting loops with <code>break</code></h3>
+                        <p>
+                            Use a <span>break</span> to exit a <span>loop</span> before all <span>iterations</span> are completed; will immediately exit the <span>loop</span> and move on to the next code. For when the <span>condition</span> must be checked in the middle of the <span>loop</span>, not the beginning or end.
+                        </p>
+                        <p>
+                            For example, if you want to find contacts/phone numbers, loop until the number is found, then <span>break</span> to stop the <span>function</span> from <span>iterating</span> further.
+                        </p>
+                    <h3>Skipping iterations with <code>continue</code></h3>
+                        <p>
+                            Similar concept as <span>break</span>, but rather than breaking out of the <span>loop</span>, it will skip to the next <span>iteration</span>.
+                        </p>
+                        <p>
+                            Does not stop the whole <span>loop</span>, just the current <span>iteration</span> - and starts a new one (if the condition allows).
+                        </p>
+                        <p>
+                            Example would be searching for square roots - if <code>!== sqRoot</code>, <code>continue</code> will start back at the <span>counter</span>.
+                        </p>
+                    <h3><span>Labels</span> for <span>break</span>/<span>continue</span></h3>
+                        <p>
+                            To <span>break</span> out of multiple <span>loops</span> at once, use <span>labels</span>, an identifier, to specify:
+                        </p>
+                        <pre><code>
+    labelName:
+    for (...) {
+        // code 
+    }
+
+    break labelName; // breaks to the outer loop 
+                        </code></pre>
+                <h2>while / do...while loop</h2>
+                    <h3>While</h3>
+                        <p>
+                            Similar to the <span>for loop</span>, except the <span>initializer</span> is set before the <span>loop</span> and <span>final-expression</span> is inside the <span>loop</span> after the code is run. When the <span>condition</span> is <span>truthy</span>, the code is executed.
+                        </p>
+                        <p>
+                            Curly braces aren't required for a single-line body: <code>while (I) alert (i--);</code>
+                        </p>
+                    <h3>Do...while</h3>
+                        <p>
+                            Very similar to a <span>while loop</span>, but the <span>condition</span> comes after everything else, in parentheses, and preceded by <code>while</code>.
+                        </p>
+                        <p>
+                            The code inside <code>{}</code> is always run once before the check is made; when the <span>condition</span> is <span>truthy</span>, the code is executed.
+                        </p>
+                        <p>
+                            Reminder! Always executes the code at least once! before checking the <span>condition</span>. 
+                        </p>
+
+
+
             </section>
 
 <!-- DOM Manipulation -->
