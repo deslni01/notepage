@@ -1049,6 +1049,12 @@
                             Just run it using it's <code>name()</code>. 
                         </p>
                     <h3>Return values</h3>
+                        <p>
+                            Not all <span>functions</span> return a value; they are <span>void</span>, or <span>undefined</span>; generally used when the <span>function</span> is an intermediate step in a calculation.
+                        </p>
+                        <p>
+                            To return a value, <span>return</span> can be any place in the <span>function</span>; when it is reached, the <span>function</span> stops and the value is returned. If empty or without a return, it is <span>undefined</span>.
+                        </p>
                 <h2>Function types</h2>
                     <h3>Function declaration</h3>
                         <p>
@@ -1104,7 +1110,36 @@
                             </li>
                         </ul>
                 <h2>Parameters</h2>
+                    <p>
+                        <span>Parameters</span>, aka <span>arguments</span>, <span>properties</span>, and <span>attributes</span>, are values included in a <span>function's</span> <code>()</code> to do its job properly - they are what feed the function.
+                    </p>
+                    <p>
+                        If a <span>parameter</span> is not included, it becomes <span>undefined</span> and not returned.
+                    </p>
+                    <p>
+                        A <span>default value</span> can be assigned:
+                        <pre><code>
+    let from = Ann;
+    function showMessage(from, text = "no text given") // Ann, no text given 
+                        </code></pre>
+                        Can also use <span>alternative default values</span> in the body of the code rather than the declaration.
+                    </p>
                 <h2>Scope and conflicts</h2>
+                    <p>
+                        <span>Scope</span> is when <span>values</span> and <span>expressions</span> are 'visible' and able to be referenced. They can be layered in the hierarchy so the <span>child(ren)</span> has access to <span>parent scopes</span>, but not the other way around.
+                    </p>
+                    <p>
+                        <span>Functions</span> are 'closers' in JS, in that they create a scope in which something defined within the <span>function</span> cannot be accessed outside or in other <span>functions</span>. 
+                    </p>
+                    <p>
+                        <span>Global scope</span> is the top level outside all functions, and can be accessed within all functions.
+                    </p>
+                    <p>
+                        <span>Local variables</span> are part of the <span>scope</span> - declared in a <span>function</span>, and only seen inside that <span>function</span>. 
+                    </p>
+                    <p>
+                        <span>Outer variables</span>, aka <span>global variables</span>, are declared outside a function, can modify an outer value, and can use the same name within a function without affecting the outer <span>variable</span>. Try to use <span>global variables</span> as infrequently as possible - mostly used to store project-level data!
+                    </p>
                 
             </section>
 
@@ -1113,6 +1148,83 @@
             <section id="arrays" class="main-section">
                 <header>Arrays</header>
                 <h2>Basics</h2>
+                    <p>
+                        An <span>array</span> is a special <span>variable</span> which can hold more than one <span>value</span> at once; rather than storing <code>car1</code>, <code>car2</code>, etc., can use <span>array</span> <code>cars</code>. Items can be accessed using an <span>index number</span> - <code>cars[1]</code>. 
+                    </p>
+                    <h3>Creating, accessing, changing:</h3>
+                        <p>
+                            To create an array:
+                        </p>
+                            <pre><code>
+    // syntax:
+    var arrayName = [item1, item2, item3, ...];
+    // can span multiple lines:
+    var cars = [
+        "Saab",
+        "Volvo",
+        "BMW"
+        ];
+                            </code></pre>
+                        <p>
+                            Note: avoid using <code>new</code> to create an array, if examples are seen; <code>new</code> can complicate the code and cause issues (e.g. potentially creating an array with undefined elements)!
+                        </p>
+                            <pre><code>
+        var points = new Array(40, 100); // creates array w/2 elements, 40 and 100
+        var points = new Array(40); // creates array with 40 undefined elements!
+                            </code></pre>
+                        </p>
+                        <p>
+                            Use <span>index numbers</span> to access the <span>elements</span> of an <span>array</span> - reminder they start at <code>0</code>! e.g. <code>var name = cars[0]; // Saab</code>
+                        </p>
+                        <p>
+                            To access the full <span>array</span>, simply is the name: <code>document.getElementById('demo').innerHTML = cars;</code>
+                        </p>
+                        <p>
+                            To change an <span>array element</span>, simply redefine using the <span>index</span>: <code>cars[0] = "Saab"; cars[0] = "Opel";</code>
+                        </p>
+                    <h3>Object?</h3>
+                        <p>
+                            Yeppers.
+                        </p>
+                        <p>
+                            But they're a special kind of <span>object</span>. This allows <span>variables</span> of different types within the same <span>array</span> - e.g. <span>objects</span>, <span>functions</span>, <span>arrays</span>, etc:
+                            <pre><code>
+    myArray[0] = Date.now;
+    myArray[1] = myFunction;
+    myArray[2] = myCars;
+                            </code></pre>
+                        </p>
+                        <p>
+                            Difference between an <span>array</span> and <span>object</span>? <span>Arrays</span> use <span>numbered indices</span>, whereas <span>objects</span> use <span>named indices</span>.
+                        </p>
+                        <p>
+                            Use an <span>object</span> when you want <span>element names</span> to be <span>strings</span>; use an <span>array</span> when you want <span>element names</span> to be <span>numbers</span>. 
+                        </p>
+                        <p>
+                            Using <code>typeof</code> on an <span>array</span> returns <code>object</code> - but this can cause issues. Instead, use <code>Array.isArray()</code> (e.g. <code>Array.isArray(fruits); // returns true</code>), or use <code>instanceof</code>, which returns <code>true</code> with a given <span>constructor</span>: <code>fruits instanceof Array; // returns true</code>. 
+                        </p>
+                    <h3>Array properties and methods</h3>
+                        <ul>
+                            <li>
+                                <code>var x = cars.length; // returns the number of elements</code>; reminder will by 1 more than highest <span>array index</span> because it starts at <code>0</code>! 
+                            </li>
+                            <li>
+                                <code>var x = cars.sort(); // sorts array</code>
+                            </li>
+                            <li>
+                                <code>var first = fruits[0]; // access first element</code> 
+                            </li>
+                            <li>
+                                <code>var last = [fruits[fruits.length] - 1]; // access last element</code>
+                            </li>
+                            <li>
+                                Looping array elements using <span>for loop</span> or <code>Array.forEach()</code>; see /foundations-fundamentals-4.html for more~
+                            </li>
+                            <li>
+                                <code>push()</code>, <code>length</code>, or directly (<code>array[5] = banana</code>) to add elements
+                            </li>
+                        </ul>
+
             </section>
 
 <!-- Loops -->
@@ -1145,14 +1257,57 @@
 
             <section id="best-practices" class="main-section">
                 <header>Best Practices</header>
+                <h2>Understand the problem</h2>
+                    <p>
+                        The first step of any process; write it down, reword it into plain English until it makes sense - use diagrams if needed!
+                    </p>
+                    <p>
+                        <span>Plan</span>! Ask questions - does it have a ui? what will it look like/functionality will it have? What inputs will it have? Will the user enter data, or is the data from elsewhere? What's the output? What are the steps necessary to get the output from the inputs?
+                    </p>
                 <h2>Pseudo Code</h2>
+                    <p>
+                        The <span>algorithm</span> - the recipe to solve the problem - laid out in logical steps in plain language, not code. 
+                    </p>
+                    <pre><code>
+    // user inputs number
+    // initialize a counter variable and set value to 0
+    // while counter is smaller than input number, increment counter by 1
+    // print value of the counter variable 
+                    </code></pre>
+                    <p>
+                        While planning, identify smaller problems of the bigger problem - these are the steps of the <span>algorithm</span>; pick small(er) ones and start coding! Reminder, the <span>algorithm</span> may be incomplete as not all steps are known or thought of right away.
+                    </p>
+                    <p>
+                        To reiterate the process:
+                        <ul>
+                            <li>
+                                Understand - know what's being asked until it can be explained in plain language - write it down, draw diagrams, etc. if needed to understand 
+                            </li>
+                            <li>
+                                Plan - write down the steps needed - answer those questions above
+                            </li>
+                            <li>
+                                Divide - break into small problems, and work to solve one by one with the simplest 
+                            </li>
+                            <li>
+                                Stuck? Debug - go step by step to find where went wrong; reassess - take a step back, look from a different perspective; research - Google it!
+                            </li>
+                        </ul>
+                    </p>
                 <h2>Clean Code</h2>
                 <ul>
-                    <li>something</li>
-                    <li>something</li>
-                    <li>something</li>
-                    <li>something</li>
-                    <li>something</li>
+                    <li>
+                        Indentation - be consistent!
+                    </li>
+                    <li>
+                        Semicolons - mostly optional in JS, but just get used to it for clarity
+                    </li>
+                    <li>
+                        Line length - limit the length of each line, manually breaking longer than ~80 characters
+                    </li>
+                    <li>
+                        Naming - be descriptive, and use <span>camelCase</span>. <span>Variables</span> with nouns, <span>functions</span> with verbs. It's OK to use single-character <span>variables</span> when using a <span>loop</span> or <span>callback function</span>. 
+                    </li>
                 </ul>
             </section>
 

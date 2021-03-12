@@ -7,6 +7,8 @@ html, body {
     font-family: 'Roboto', sans-serif;
 }
 
+/* Selection/scrollbar styles */
+
 ::selection {
     color: #f1f1f1;
     /* WebKit/Blink Browsers */
@@ -18,6 +20,27 @@ html, body {
     /* Gecko Browsers */
     background: rgb(255, 68, 68);
 }
+
+.custom-scrollbar {
+    height: 70px;
+    overflow-y: scroll;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgb(255, 68, 68);
+    border-radius: 12px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #f1f1f1;
+    border-radius: 12px;
+  }
+
+/* main page */
 
 #navbar {
     background-color: rgb(209, 209, 209);
