@@ -1312,8 +1312,249 @@
 
             <section id="dom-manip" class="main-section">
                 <header>DOM Manipulation</header>
-                <h2>Basics</h2>
+                    <p>
+                        Document Object Model - a tree-like representation of the contents of a webpage - of '<span>nodes</span>' - depending how they're arranged in an HTML document. Can be manipulated via JS.
+                    </p>
+                <h2>Targeting nodes</h2>
+                    <p>
+                        Can use a combo of CSS-style selectors and relationship properties to target specific nodes in multiple ways - <code>div.display;</code> <code>.display;</code> <code>#container > .display;</code> <code>div#container > div.display</code> - these can all target the same node(s)!
+                    </p>
+                    <p>
+                        Can use relational selectors, like <code>firstElementChild</code> or <code>lastElementChild</code>, as well.
+                    </p>
+                    <pre><code>
+    // examples:
+    const container = document.querySelector('#container'); 
+        // selects #container div 
+    console.dir(container.firstElementChild); 
+        // select first child of #container => .display 
+    const controls = document.querySelector('.controls'); 
+        // select .controls div via class 
+    console.dir(controls.previousElementSibling); 
+        // selectors prior sibling => .display 
+                    </code></pre>
                 <h2>DOM Methods</h2>
+                    <p>
+                        Properties asnd methods attached to <span>nodes</span> in the <span>DOM</span>:
+                    </p>
+                    <h3><span>Query Selectors</span> - to target nodes:</h3>
+                        <ul>
+                            <li>
+                                <code>element.querySelector(selector);</code> returns reference to the first match of <code>selector</code>
+                            </li>
+                            <li>
+                                <code>element.querySelectorAll(selectors)</code> returns a <span>nodelist</span>, referring to all matches 
+                            </li>
+                            <li>
+                                Note: <code>querySelectorAll</code>'s <span>nodelist</span> looks like an <span>array</span>, kinda acts like one, but isn't. It's a <span>nodelist</span>. To convert it to an array, use <code>Array.from()</code>
+                            </li>
+                        </ul>
+                    
+                    <h3><span>Element</span> creation</h3>
+                        <ul>
+                            <li>
+                                <code>document.createElement(tagName[, options]);</code> creates a new element of tag type <code>tagName</code>. Example: <code>const div = document.createElement('div');</code>
+                            </li>
+                            <li>
+                                Note: creating an <span>element</span> does not put <span>elements</span> into the <span>DOM</span>! It puts them in memory to style before placing on the page; to add to the DOM? 
+                            </li>
+                        </ul>
+                    <h3>Append <span>elements</span></h3>
+                        <ul>
+                            <li>
+                                <code>parentNode.appendChild(childNode);</code> appends <code>childNode</code> as the last child of <code>parentNode</code>. 
+                            </li>
+                            <li>
+                                <code>parentNode.insertBefore(newNode, referenceNode);</code> insterts <code>newNode</code> into <code>parentNode</code> before <code>referenceNode</code>
+                            </li>
+                        </ul>
+                    <h3>Remove <span>elements</span></h3>
+                        <ul>
+                            <li>
+                                <code>parentNode.removeChild(child);</code> removes <code>child</code> from <code>parentNode</code>
+                            </li>
+                        </ul>
+                    <h3>Altering <span>elements</span></h3>
+                        <ul>
+                            <li>
+                                <code>const div = document.createElement('div');</code> creates a new <code>div</code> reference in <span>variable</span> <code>div</code>
+                            </li>
+                            <li>
+                                Add inline CSS styling: <code>div.style.color = 'blue';</code> or with multiple style rules: <code>div.style.cssText = 'color: blue; background: white';</code> can also be written: <code>div.setAttribute('style', 'color: blue; background: white';</code>
+                            </li>
+                        </ul>
+                    <h3>Editing <span>attributes</span></h3>
+                        <ul>
+                            <li>
+                                <code>div.setAttribute('id', 'theDiv');</code> checks if the id exists, updates to <code>'theDiv'</code>, else creates id with value <code>'theDiv'</code>
+                            </li>
+                            <li>
+                                <code>div.getAttribute('id');</code> returns value of specified attribute
+                            </li>
+                            <li>
+                                <code>div.removeAttribute('id');</code> to remove specified attribute
+                            </li>
+                        </ul>
+                    <h3>Working with <span>classes</span></h3>
+                        <ul>
+                            <li>
+                                <code>div.classList.add('new');</code> adds class <code>'new'</code> to your new <code>div</code>. 
+                            </li>
+                            <li>
+                                <code>div.classList.remove('new');</code> will remove 
+                            </li>
+                            <li>
+                                <code>div.classList.toggle('active');</code> will check if <code>div</code> has class <code>'active'</code> and add it or remove it
+                            </li>
+                            <li>
+                                Note: it's cleaner and more common to toggle a CSS style rather than adding/removing inline CSS 
+                            </li>
+                        </ul>
+                    <h3>Adding content</h3>
+                        <ul>
+                            <li>
+                                <code>div.textContent = 'Hello World!';</code> creates a text node and inserts into the <code>div</code>
+                            </li>
+                            <li>
+                                <code>div.innerHTML = '&lt;span>Hello World!&lt;/span>';</code> renders the HTML inside the <code>div</code>
+                            </li>
+                            <li>
+                                Note: use <code>innerHTML</code> sparingly, it can create security risks if misused!
+                            </li>
+                        </ul>
+                    <h3>Examples</h3>
+                    <pre><code>
+        // a &lt;p> with red text that says 'Hey I'm red!'
+    const para = document.createElement('p');
+    para.classList.add('para');
+    para.style.color = 'red';
+    para.textContent = 'Hey I\'m red!'
+    
+    container.appendChild(para);
+    
+        // an &lt;h3> with lbue text that says "I'm a blue h3!"
+    const h3 = document.createElement('h3');
+    h3.classList.add('h3');
+    h3.style.color = 'blue';
+    h3.textContent = 'I\'m a blue h3!';
+    
+    container.appendChild(h3);
+
+        // uber combo:
+    const insideContent = document.createElement('div');
+    insideContent.classList.add('insideContent');
+    insideContent.style.cssText = 'border: black; background-color: pink';
+    
+    const insidePara = document.createElement('p');
+    insidePara.classList.add('para');
+    insidePara.textContent = "ME TOO";
+    
+    const h1 = document.createElement('h1');
+    h1.classList.add('h1');
+    h1.textContent = "I\'m in a div";
+    
+    insideContent.appendChild(h1);
+    insideContent.appendChild(insidePara);
+    
+    container.appendChild(insideContent);    
+                    </code></pre>
+                <h2>Events!</h2>
+                    <p>
+                        <span>Events</span> - actions that occur on the page, such as a mouseclick or keypress; can use JS to make the page react
+                    </p>
+                    <p>
+                        Three primary ways:
+                        <ul>
+                            <li>
+                                1. Attach function attributes directly on your HTML elements: <pre><code>< button onclick="alert('Hello World')">Click Me< /button></code></pre>
+                            </li>
+                            <li>
+                                2. Set the <code>'on_event_'</code> property on the <span>DOM object</span> in your JS:
+                                <pre><code>
+        // in the HTML file:                            
+    &lt;button id="btn">Click Me&lt;/button>
+        // in the JS file/script: 
+    const btn = document.querySelector('#btn');
+    btn.onclick = () => alert("Hello world");                            
+                                </code></pre>
+                            </li>
+                            <li>
+                                3. Attach <span>event listeners</span> to the <span>nodes</span> - this is the preferred method, but all 3 can be useful!
+                                <pre><code>
+        // in the HTML file:
+    &lt;button id="btn">Click Me&lt;/button>
+        // in the JS file/script: 
+    const btn = document.querySelector('#btn');
+    btn.addEventListener('click', () => {
+        alert("Hello World");
+    });
+                                </code></pre>
+                            </li>
+                            <li>
+                                <span>Named functions</span> can be used, too! This can help clean up the code considerably.
+                                <pre><code>
+        // in HTML file:
+    &lt;button onclick="alertFunction()">CLICK ME BABY&lt;/button>
+    
+        // JS file:
+    function alertFunction() {
+        alert("YAY! YOU DID IT!");
+    }
+    
+        // Method 2:
+    btn.onclick = alertFunction;
+    
+        // Method 3:
+    btn.addEventListener('click', alertFunction);                                
+                                </code></pre>
+                            </li>
+                        </ul>
+                    </p>
+                    <p>
+                        You can access more info on the <span>event</span> itself using a <span>function</span> that tells the console information on what was clicked, how clicked, etc.
+                        <pre><code>
+    btn.addEventListener('click', function (e) {
+        console.log(e);
+    });
+
+    // more information example:
+    btn.addEventListener('click', function (e) {
+        console.log(e.target);
+    });
+
+    // example to change the background:
+    btn.addEventListener('click', function (e) {
+        e.target.style.background = 'blue';
+    });
+                        </code></pre>
+                    </p>
+
+                    <p>
+                        If a lot of similar <span>event listeners</span> added to many <span>elements</span>, can be simplified with <code>querySelectorAll('selector')</code> which iterates through the list.
+                        <ul>
+                            <li>
+                                Useful <span>events</span>: <code>click</code>, <code>dblclick</code>, <code>keypress</code>, <code>keydown</code>, <code>keyup</code>, etc.
+                            </li>
+                        </ul>
+                        <pre><code>
+    // in HTML:
+    &lt;div id="container">
+        &lt;button id="1">Click&lt;/button>
+        &lt;button id="2">Click&lt;/button>
+        &lt;button id="3">Click&lt;/button>
+    &lt;/div>
+
+    const buttons = document.querySelectorAll('button');
+
+    // use .forEach to iterate through each button: 
+    buttons.forEach((button) => {
+        // and for each we add a 'click' listener:
+        button.addEventListener('click', () => {
+            alert(button.id);
+        });
+    });
+                        </code></pre>
+                    </p>
             </section>
 
 <!-- Objects -->
@@ -1321,8 +1562,65 @@
             <section id="objects" class="main-section">
                 <header>Objects</header>
                 <h2>Basics</h2>
+                    <p>
+                        As a reminder, there are 8 <span>data types</span> - 7 are <span>'primitive'</span> in that they contain a single thing, but <span>are the exception</span>. 
+                    </p>
+                    <p>
+                        <span>Objects</span> are used to store <span>keyed</span> collections of various data/complex entities, related ata/functionality, usually of several variables and functions called <span>properties</span> and <span>methods</span> inside an <span>object</span>. 
+                    </p>
+                    <p>
+                        Can be created with <code>{}</code> and <span>properties</span> - in a <span>key: value</span> pair.
+                        <span>Object literal</span> syntax is most common and is to create an <span>object</span> as it's defined - e.g. <code>const person = {};</code>
+                    </p>
+                    <p>
+                        <span>Square brackets</span> are more complex and powerful than <span>dot notation</span>, but more cumbersome and not as easy to use; use <span>dot notation</span> where property names are known and simple, else use <span>square brackets</span>.
+                    </p>
+                    <p>
+                        To test if a property exists, use <code>in</code> - no error if property doesn't exist, just <code>'undefined'</code>. <code>alert( "age" in user ); // true, user.age exists</code>.
+                    </p>
+                    <p>
+                        How are things ordered inside an <span>object</span>? If we loop over one, we see <span>integer</span> properties are in numeric sort, and the rest in creation order.
+                        <ul>
+                            <li>
+                                Note that integer properties can be converted to string/integer without change: e.g. <code>"49"</code> can turn into <code>49</code>; but <code>"+49"</code> can 'cheat' the system, as it can't be converted to an integer!
+                            </li>
+                        </ul>
+                    </p>
+                    <p>
+                        Speaking of looping, the <code>for...in</code> loop is a special form that walks over all <span>keys</span> or an <span>object</span>, and can use any variable name in the syntax.
+                    </p>
                 <h2>Bracket Notation</h2>
+                    <p>
+                        Using <span>square brackets</span> to add/remove/get multiword properties:
+                        <ul>
+                            <li>
+                                <code>user["likes birds"] = true;</code>, etc.
+                            </li>
+                            <li>
+                                Calling info: <code>let age = 30;</code>, <code>user[age]; // 30</code>
+                            </li>
+                            <li>
+                                Similar to an <span>array</span> (<code>name[1]</code>) - call using the <span>member name</span>: <code>person['age'];</code>, <code>person['name']</code>, etc.
+                            </li>
+                            <li>
+                                To set <span>object members</span>, <span>Bracket notation</span> is nice because you can create new <span>member names</span>, too: <code>// declare vars; person[myDataName] = myDataValue;</code>
+                            </li>
+                        </ul>
+                    </p>
                 <h2>Dot Notation</h2>
+                    <p>
+                        The <span>namespace</span> is the <span>object</span> name (e.g. <code>person</code>), followed by <code>.</code>, then the item to access. E.g. <code>person.age;</code>, <code>person.interests[1];</code>, <code>person.bio();</code>, etc.
+                    </p>
+                    <p>
+                        <span>Sub-namespaces</span> are an <span>object</span> within an <span>object</span> (e.g. <code>name: { first: 'bob', last: 'smith' }</code>). Can be called with <code>person.name.last</code>, <code>person.name.first</code>, etc.
+                    </p>
+                    <p>
+                        To set object members, simply <code>person.age = 45;</code>. <code>person.age; // 45</code>, etc.
+                    </p>
+                <h2>'this'?</h2>
+                    <p>
+                        We'll get more to this later, but ensures the code refers to the current <span>object</span>, in case value's context changes.
+                    </p>
             </section>
 
 <!-- Best Practices -->
