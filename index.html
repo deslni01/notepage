@@ -711,6 +711,25 @@
     // if age < 3 = true, say 'Hi, baby!'; if false, then if age < 18 is true, 
     // say 'Hello!', if false, then if age < 100, say 'Greetings!', if false, 
     // then say 'What an unusual age!'
+
+    // another example:
+    if(machineActive === true) {
+        ( pwd === 'cheese' ) ? pwdResult = "Welcome!" : pwdResult = "No luck!";
+    } else {
+        machineResult = "Sorry, the machine is not on";
+    }
+
+    // how to write an else into ternary:
+    let result;
+
+    if (a + b < 4) {
+        result = 'Below';
+    } else {
+        result = 'Over';
+    }
+
+    // converted to ternary:
+    let result = (a + b < 4) ? 'Below' : 'Over';
                                 </code></pre>
                             </li>
                             <li>
@@ -852,6 +871,40 @@
     } else {
         response = 'The machine is turned off. Turn it on to process your score.';
     }
+
+    // note you can set one output to multiple cases:
+
+    const month = new Date().getMonth();
+        // Note 0 is Jan, 11 December
+
+    switch (month) {
+        // Jan, Feb, Mar
+        case 0 :
+        case 1 :
+        case 2 :
+            console.log("Winter");
+            break;
+        // Apr, May, Jun
+        case 3 :
+        case 4 :
+        case 5 :
+            console.log("Spring");
+            break;
+        // Jul, Aug, Sep
+        case 6 :
+        case 7 :
+        case 8 :
+            console.log("Summer");
+            break;
+        // Oct, Nov, Dec
+        case 9 :
+        case 10 :
+        case 11: 
+            console.log("Winter");
+            break;
+        default:
+            console.log("Something went wrong.");
+    }
                                 </code></pre>
                         </p>
 
@@ -869,11 +922,16 @@
     alert( true || false ); // true 
     alert( false || false ); // false 
 
-    example:
-    if (iceCreamVanOutside || houseStatus === 'on fire') {
-        console.log('You should leave the house quickly');
-    } else {
-        console.log('Probably should just stay in then');
+        // example:
+    if (choice === 'sunny' && temperature < 86) {
+        para.textContent = 'It is ' + temperature + ' degrees outside - nice and sunny';
+    } else if (choice === 'sunny' && temperature >= 86) {
+        para.textContent = 'It is ' + temperature + ' degrees outside - way too hot!';
+    }
+
+        // Can combine as many as wanted:
+    if ((x === 5 || y > 3 || z <= 10) && (loggedIn || userName === 'Steve')) {
+        // run the code
     }
                                 </code></pre>
 
@@ -1054,6 +1112,45 @@
                         </p>
                         <p>
                             To return a value, <span>return</span> can be any place in the <span>function</span>; when it is reached, the <span>function</span> stops and the value is returned. If empty or without a return, it is <span>undefined</span>.
+                            <pre><code>
+    /* basic example: */
+    function sum(a, b) {
+        return a + b;
+    }
+    
+    let result = sum(1, 2);
+    alert(result); // 3
+    
+    /* there may be multiple returns in a function: */
+    
+    function checkAge(age) {
+        if (age >= 18) {
+            return true;
+        } else {
+            return confirm('Do you have permission from your parents?');
+        }
+    }
+    
+    let age = prompt('How old are you?', 18);
+    
+    if ( checkAge(age) ) {
+        alert( 'Access granted' );
+    } else {
+        alert( 'Access denied' );
+    }
+    
+    /* can return without value, which exits the function immediately: */
+    
+    function showMovie(age) {
+        if( !checkAge(age) ) {
+            return;
+        }
+    
+        alert( "Showing you the movie" ); 
+    }
+    
+    // If checkAge returns false, then showMovie won't proceed to the alert                            
+                            </code></pre>
                         </p>
                 <h2>Function types</h2>
                     <h3>Function declaration</h3>
@@ -1083,10 +1180,25 @@
                     <h3>Anonymous functions</h3>
                         <p>
                             A function with no name! Something something Jon Snow, I don't know, I never saw the show. Usually just use <code>function() { // code }</code>, and most often used with an <span>event handler</span>. 
+                            <pre><code>
+    const myButton = document.querySelector('button');
+
+    myButton.onclick = function() {
+        alert('hello');
+    }                            
+                            </code></pre>
                         </p>
                     <h3>Callback functions</h3>
                         <p>
                             Declaring a <span>function</span> inside a call, building <span>parameters</span> as functions. Pass a function and expect it called back later if necessary - see example html file 3. These <span>functions</span> are only inside the call - <span>hyper local</span>! 
+                            <pre><code>
+    /* callback example: */
+
+    function ask(question, yes, no) {
+        if (confirm(question)) yes();
+        else no();
+    }
+                            </code></pre>
                         </p>
                     <h3>Arrow functions</h3>
                         <p>
@@ -1094,24 +1206,39 @@
                         </p>
                         <ul>
                             <li>
-                                <code>let func = (arg1, arg2, ...argN) => expression</code>
+                                <code>let func = (arg1, arg2, ...argN) => expression;</code> - e.g. <code>let sum = (a, b) => a + b;</code>
                             </li>
                             <li>
-                                If only one <span>argument</span>, can omit parens: <code>func = arg => expression</code>.
+                                If only one <span>argument</span>, can omit parens: <code>func = arg => expression;</code> - e.g. <code>let double = n => n * 2;</code>
                             </li>
                             <li>
-                                If no <span>argument</span>, empty parens: <code>func = () => expression</code>.
+                                If no <span>argument</span>, empty parens: <code>func = () => expression;</code> - e.g. <code>let sayHi = () => alert("Hello!");</code>
                             </li>
                             <li>
                                 <span>multiline arrow functions</span> allow added complexity:
                                 <pre><code>
-    // example:
+    /* example: */
+
+    let sum = (a, b) => { // the curly brace opens a multiline function
+        let result = a + b;
+        return result; // if we use curly braces, then we need an explicit 'return'
+    };
+    
+    alert( sum(1,2) ); // 3
                                 </code></pre>
                             </li>
                         </ul>
                 <h2>Parameters</h2>
                     <p>
                         <span>Parameters</span>, aka <span>arguments</span>, <span>properties</span>, and <span>attributes</span>, are values included in a <span>function's</span> <code>()</code> to do its job properly - they are what feed the function.
+                        <pre><code>
+    function showMessage(from, text) { // arguments: from, text
+        alert(from + ': ' + text);
+    }
+    
+    showMessage('Ann', 'Hello!'); // Ann: Hello!
+    showMessage('Nick', 'Turtle'); // Nick: Turtle                        
+                        </code></pre>
                     </p>
                     <p>
                         If a <span>parameter</span> is not included, it becomes <span>undefined</span> and not returned.
@@ -1121,12 +1248,19 @@
                         <pre><code>
     let from = Ann;
     function showMessage(from, text = "no text given") // Ann, no text given 
+
+    /* Can also be a more complex expression, only evaluated and assigned if param missing: */
+
+    function showMessage(from, text = anotherFunction()) {
+        // anotherFunction() is only executed if no text is given
+        // its result becomes the value of text
+    }
                         </code></pre>
                         Can also use <span>alternative default values</span> in the body of the code rather than the declaration.
                     </p>
                 <h2>Scope and conflicts</h2>
                     <p>
-                        <span>Scope</span> is when <span>values</span> and <span>expressions</span> are 'visible' and able to be referenced. They can be layered in the hierarchy so the <span>child(ren)</span> has access to <span>parent scopes</span>, but not the other way around.
+                        <span>Scope</span> is when <span>values</span> and <span>expressions</span> are 'visible' and able to be referenced. They can be layered in the hierarchy so the <span>child(ren)</span> has access to <span>parent scopes</span>, but not the other way around.                        
                     </p>
                     <p>
                         <span>Functions</span> are 'closers' in JS, in that they create a scope in which something defined within the <span>function</span> cannot be accessed outside or in other <span>functions</span>. 
@@ -1139,6 +1273,94 @@
                     </p>
                     <p>
                         <span>Outer variables</span>, aka <span>global variables</span>, are declared outside a function, can modify an outer value, and can use the same name within a function without affecting the outer <span>variable</span>. Try to use <span>global variables</span> as infrequently as possible - mostly used to store project-level data!
+                        <pre><code>
+    /* invalid scope - declared in function, but called outside: */
+
+    function exampleFunction() {
+        var x = "declare inside function"; // x can only be used in exampleFunction
+        console.log("Inside function");
+        console.log(x);
+    }
+    
+    console.log(x); // causes error
+
+    /* valid - the variable is declared outside function, so global: */
+
+    var x = "declared outside function";
+
+    exampleFunction();
+
+    function exampleFunction() {
+        console.log("inside function");
+        console.log(x);
+    }
+
+    console.log("Outside function");
+    console.log(x);
+
+    /* use functions inside functions to make code easier to understand and in-scope: */
+
+    function myBigFunction() {
+        let myValue = 1;
+    
+        subFunction1();
+        subFunction2();
+        subFunction3();
+    }
+    
+    function subFunction1(value) {
+        console.log(value);
+    }
+    
+    function subFunction2(value) {
+        console.log(value);
+    }
+    
+    function subFunction3(value) {
+        console.log(value);
+    }
+
+    /* outer variables - declared outside a function, can also be called in a function: */
+
+    let userName = 'John';
+
+    function showMessage() {
+        let message = 'Hello, ' + userName;
+        alert(message);
+    }
+
+    showMessage(); // Hello, John
+
+    /* functions can modify outer variables as well: */
+
+    let userName = 'John';
+
+    function showMessage() {
+        userName = 'Bob'; // changed the outer variable
+        let message = 'Hello, ' + userName;
+        alert(message);
+    }
+
+    alert(userName); // John before the function call
+
+    showMessage(); // function call
+
+    alert(userName); // Bob, since it was modified by the function call
+
+    /* if a same-named variable used both locally and outer, the outer variable is ignored: */
+
+    let userName = 'John';
+
+    function showMessage() {
+        let userName = 'Bob'; // declared local variable
+        let message = 'Hello, ' + userName; // Bob
+        alert(message);
+    }
+
+    // the function will create and use its own userName
+    showMessage(); // hello bob
+    alert(userName); // hello, John - unchanged since the function used the local userName
+                                                </code></pre>
                     </p>
                 
             </section>
@@ -1466,7 +1688,7 @@
                         Three primary ways:
                         <ul>
                             <li>
-                                1. Attach function attributes directly on your HTML elements: <pre><code>< button onclick="alert('Hello World')">Click Me< /button></code></pre>
+                                1. Attach function attributes directly on your HTML elements: <pre><code> &lt;button onclick="alert('Hello World')">Click Me&lt;/button></code></pre>
                             </li>
                             <li>
                                 2. Set the <code>'on_event_'</code> property on the <span>DOM object</span> in your JS:
@@ -1563,10 +1785,10 @@
                 <header>Objects</header>
                 <h2>Basics</h2>
                     <p>
-                        As a reminder, there are 8 <span>data types</span> - 7 are <span>'primitive'</span> in that they contain a single thing, but <span>are the exception</span>. 
+                        As a reminder, there are 8 <span>data types</span> - 7 are <span>'primitive'</span> in that they contain a single thing, but <span>objects</span> are the exception. 
                     </p>
                     <p>
-                        <span>Objects</span> are used to store <span>keyed</span> collections of various data/complex entities, related ata/functionality, usually of several variables and functions called <span>properties</span> and <span>methods</span> inside an <span>object</span>. 
+                        <span>Objects</span> are used to store <span>keyed</span> collections of various data/complex entities, related data/functionality, usually of several variables and functions called <span>properties</span> and <span>methods</span>. 
                     </p>
                     <p>
                         Can be created with <code>{}</code> and <span>properties</span> - in a <span>key: value</span> pair.
@@ -1587,7 +1809,7 @@
                         </ul>
                     </p>
                     <p>
-                        Speaking of looping, the <code>for...in</code> loop is a special form that walks over all <span>keys</span> or an <span>object</span>, and can use any variable name in the syntax.
+                        Speaking of looping, the <code>for...in</code> loop is a special form that walks over all <span>keys</span> of an <span>object</span>, and can use any variable name in the syntax.
                     </p>
                 <h2>Bracket Notation</h2>
                     <p>
@@ -1689,11 +1911,518 @@
                 <p>Or should I put them in both - or is that just a waste of time and space?</p>
                 <h2>Website's problems:</h2>
                 <h3>Problem:</h3>
-                <pre>
-                        <code>
+                <pre><code>
+    
 
-                        </code>
-                    </pre>
+    // ===================================================================================
+    // from foundations-fundamentals-2.html :
+
+    /* a simple calendar
+        Add conditional statement inside onchange handler function:
+        1 Look at selected month (stored in 'choice')
+        2 Set a variable called days equal to number in selected month
+        Hint to use OR to group multiple months in single condition, with same # days
+        31 days - Jan, Mar, May, Jul, Aug, Oct, Dec
+        30 days - Apr, Jun, Sep, Nov
+        28 days - Feb */
+
+    const select = document.querySelector('select');
+    const list = document.querySelector('ul');
+    const h1 = document.querySelector('h1');
+
+    select.onchange = function() {
+    const choice = select.value;
+
+    // ADD CONDITIONAL HERE - My attempt
+        if (choice === 'February') {
+            let days = 28;
+        } else if (choice === 'April' || 'June' || 'September' || 'November') {
+            let days = 30;
+        } else {
+            let days = 31;
+        }
+    // ACTUAL SOLUTION:
+        let days = 31;
+        if(choice === 'February') {
+            days = 28;
+        } else if(choice === 'April' || choice === 'June' || choice === 'September' || 
+        choice === 'November') {
+            days = 30;
+        }
+    // NOTES - need to assign 'days' right away; remember to do choice === for each option
+    // otherwise pretty close!
+
+    createCalendar(days, choice);
+    }
+
+    function createCalendar(days, choice) {
+    list.innerHTML = '';
+    h1.textContent = choice;
+    for (let i = 1; i <= days; i++) {
+        const listItem = document.createElement('li');
+        listItem.textContent = i;
+        list.appendChild(listItem);
+    }
+    }
+
+    createCalendar(31,'January');
+
+    // ===================================================================================
+    /* More color choices!
+        Take ternary operator example, convert into a switch statement to apply more choices
+        1. Should accept 'choice' variable as input expression
+        2. For each case, choice should equal one of the possible values selected -
+        white, black, purple, yellow, psychedelic. Note: case sensitive
+        3. The update() function should be run, be passed 2 color values (bg, text); 
+        Reminder color values are strings, so wrap in '' */        
+
+    const select = document.querySelector('select');
+    const html = document.querySelector('.output');
+    
+    select.onchange = function() {
+        const choice = select.value;
+    
+        // ADD SWITCH STATEMENT - My attempt:
+    
+            switch (choice) {
+                case 'white':
+                    update('white','black');
+                    break;
+                case 'black':
+                    update('black','white');
+                    break;
+                case 'purple':
+                    update('purple','white');
+                    break;
+                case 'yellow':
+                    update('yellow','black');
+                    break;
+                case 'psychedelic':
+                    update('green','blue');
+                    break;        
+        }
+    
+        // Solution: I got it right!
+    
+    }
+    
+    function update(bgColor, textColor) {
+        html.style.backgroundColor = bgColor;
+        html.style.color = textColor;
+    }
+
+    // ===================================================================================
+    // conditionals 1:
+
+    /* Provided variables 'season' and 'response'
+        Create conditionial that checks whether 'season' contains the string 'summer'
+        If so, assigns a string to 'reponse' that gives an appropriate seasonal message.
+        If not, it should assign a generic string that we don't know the season.
+        Finish with another test to check whether 'season' contains the string 'winter' */
+
+    let season = 'summer';
+    let response;
+
+    // Add your code here - My attempt:
+        if(season === 'summer') {
+            response = "It's summer - put on shorts"; 
+        } else if(season === 'winter') {
+            response = "It's winter - put on a jacket";
+        } else {
+            response = "I dunno the season, wear whatever";
+        }
+
+    // No actual answer here, but this works when I change season to others!
+
+    // Don't edit the code below here!
+
+    section.innerHTML = ' ';
+    let para1 = document.createElement('p');
+    para1.textContent = response;
+    section.appendChild(para1);
+
+    // ===================================================================================
+    // conditionals 2:
+
+    /* Given 3 variables: 
+        1. 'machineActive' - contains indicator if machine is on or not (true/false)
+        2. 'score' - contains score from answer machine, provides response
+        3. 'response' - begins uninitialized, but later used to store to print to output panel
+        create an if...else to determine whether machine is on and puts a message into 
+           'response' if it isn't - telling user to switch it on
+        Inside, nest an if...else if...else with appropriate messages into 'response':
+        score < 10 or > 100 - "This is not possible, an error has occurred"
+        score 0-19 - "That was a terrible score - total fail!"
+        score 20-39 - "You know some things, but it's a pretty bad score. Needs improvement"
+        score 40-69 - "You did a passable job, not bad!"
+        score 70-89 - "That\'s a great score, you really know your stuff"
+        score 90-100 - "What an amazing score! Did you cheat? Are you for real?" */
+
+    let response;
+    let score = 75;
+    let machineActive = false;
+
+    // Add your code here - My attempt:
+        if(machineActive === false) {
+            response = "The machine is off - make sure to turn it on!";
+        } else {
+            if(score < 0 || score > 100) {
+                response = "This is not possible, an error has occurred";
+            } else if(score >= 0 && score < 20) {
+                response = "That was a terrible score - total fail!";
+            } else if(score >= 20 && score < 40) {
+                response = "You know some things, but it's a pretty bad score. Needs improvement";
+            } else if(score >= 40 && score < 70) {
+                response = "You did a passable job, not bad!";
+            } else if(score >= 70 && score < 90) {
+                response = "That\'s a great score, you really know your stuff";
+            } else if(score >= 90 && score < 101) {
+                response = "What an amazing score! Did you cheat? Are you for real?";
+            }
+        }
+    // For some reason, the true/false machineActive trigger isn't working...only shows
+    // the responses as if it's on, even when it's set to false. Wonder why??
+    // Answer: Simple...machineActive === 'false' needs to be just false, no quotes!
+
+    // Don't edit the code below here!
+
+    section.innerHTML = ' ';
+    let para1 = document.createElement('p');
+    let para2 = document.createElement('p');
+
+    para1.textContent = `Your score is ${ score }`;
+    para2.textContent = response;
+
+    section.appendChild(para1);
+    section.appendChild(para2);
+
+    // ===================================================================================
+    // conditionals 3:
+
+    /* Take the code from Conditionals 2, and rewrite inner if...else if...else as switch */
+
+    let response;
+    let score = 75;
+    let machineActive = false;
+
+    if(machineActive) {
+        // Add your code here - My attempt:
+
+        switch (true) {
+            case (score < 00 || score > 100):
+                response = "This is not possible, an error has occurred";
+                break;
+            case (score >= 0 && score < 20):
+                response = "That was a terrible score - total fail!";
+                break;
+            case (score >= 20 && score < 40):
+                response = "You know some things, but it's a pretty bad score. Needs improvement";
+                break;
+            case (score >= 40 && score < 70):
+                response = "You did a passable job, not bad!";
+                break;
+            case (score >= 70 && score < 90):
+                response = "That\'s a great score, you really know your stuff";
+                break;
+            case (score >= 90 && score < 101):
+                response = "What an amazing score! Did you cheat? Are you for real?"
+        }
+
+    } else {
+    response = 'The machine is turned off. Turn it on to process your score.';
+    }
+
+    // Note - I had 'switch (score)'' initially, but it should be 'switch (true)'' - the switch
+    // is testing if it's 'true', what each case is inside
+
+    // Don't edit the code below here!
+
+    section.innerHTML = ' ';
+    let para1 = document.createElement('p');
+    let para2 = document.createElement('p');
+
+    para1.textContent = `Your score is ${ score }.`;
+    para2.textContent = response;
+
+    section.appendChild(para1);
+    section.appendChild(para2);
+
+    // ===================================================================================
+    // conditionals 4:
+
+    /* Given four variables:
+        1. machineActive - login machine is switched on/off (true/false)
+        2. pwd - contains users login password
+        3. machineResult - begins uninitialized, later used to store response if machine on
+        4. pwdResult - begins uninitialized, later store response if login successfull
+        Create an if...else structure to test if machine is on, puts message into machineResult
+        if it's on, second conditional to run that checks if pwd = cheese; if so, assign a string
+        to pwdResult that it was successful; if not, that it was unsuccessful
+        this part is done on a single line and not an if...else structure */
+
+    let machineActive = true;
+    let pwd = 'cheese';
+
+    let machineResult;
+    let pwdResult;
+
+    // Add your code here - my attempt
+    // if machine is off, say it's off; if it's on, ask for pwd; if it's cheese, say ok or not
+
+    if(machineActive === true) {
+        ( pwd === 'cheese' ) ? pwdResult = "Welcome!" : pwdResult = "No luck!";
+    } else {
+        machineResult = "Sorry, the machine is not on";
+    }
+
+    // Nailed it!
+
+    // Don't edit the code below here!
+
+    section.innerHTML = ' ';
+    let para1 = document.createElement('p');
+    let para2 = document.createElement('p');
+
+    para1.textContent = machineResult;
+    para2.textContent = pwdResult;
+
+    section.appendChild(para1);
+    section.appendChild(para2);
+
+    // rewrite if...else into ternary:
+
+    let message;
+
+    if (login == 'Employee') {
+        message = 'Hello';
+    } else if (login == 'Director'); {
+        message = 'Greetings';
+    } else if (login == '') {
+        message = 'No login';
+    } else {
+        message = '';
+    }
+
+    let message = (login == 'Employee') ? 'Hello' :
+        (login == 'Director') ? 'Greetings' :
+        (login == '') ? 'No Login' :
+        '';
+
+    ----
+
+    // TOP Fundamentals Pt. 2 Practice:
+
+    // ===================================================================================
+    // exercise 1:
+
+    /**
+    * ===== Troubleshooting =====
+    * The function below should log the number 2, however it does not, 
+    * see if you can fix it!
+    * Be sure to fix it in the spirit of the code, do not hard code the result.
+    */
+
+    function troubleshooting() {
+        const a = 1;
+        const b = 1;
+
+        // Edit between these lines
+        // =================================
+        // return "a" + "b";
+        // =================================
+
+        // Solution:
+        return +a + +b;
+
+        // Can also be:
+        // return Number(a) + Number(b);
+    }
+
+    // Do not change this 
+    module.exports = troubleshooting;
+
+    // Uses + unary to convert a non-number to a number (same as Number())
+
+    // ===================================================================================
+    // exercise 2:
+
+    /**
+    * The code below tells the browser to ask you for a number
+    * then if that number is `6`, it returns `true` otherwise it returns `false`
+    * 
+    * Change this code so it returns `true` when the number is greater than or equal to 10, and false if it is less than 10
+    */
+
+    number = Number(prompt("enter a number"));
+
+    function numberChecker() {
+        if(number === 6) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // Solution:
+
+    number = Number(prompt("enter a number"));
+
+    function numberChecker() {
+        if(number >= 10) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // ===================================================================================
+    // exercise 3:
+
+    /**
+    * Lets do some math!
+    * Some rules first:
+    *   Do not enter the answers into the ? slots below, 
+    *   enter the operations, make the computer do the work for you. 
+    * 
+    * a = one plus eight
+    * b = 22 times three
+    * c = the *remainder* of 5/4
+    * d = the variable 'a' minus 17
+    * e = the sum of the previous four variables
+    */
+
+    const a = "?"
+    const b = "?"
+    const c = "?"
+    const d = "?"
+    const e = "?"
+
+    module.exports = {a, b, c, d, e}
+
+    // Solution:
+
+    const a = 1 + 8;
+    const b = 22 * 3;
+    const c = 5 % 4;
+    const d = a - 17;
+    const e = a + b + c + d;
+
+    module.exports = {a, b, c, d, e}
+
+    // ===================================================================================
+    // top fundamentals part 3:
+
+    /* 1. Write a function called 'add7' that takes one number and returns that number + 7 */
+
+    function add7(n) {
+        return n + 7;
+    }
+
+    // ===================================================================================
+    // 2. Write a function called 'multiply' that takes 2 numbers and returns their product
+
+    function multiply(a, b) {
+        return a * b;
+    }
+
+    // ===================================================================================
+    // 3. Write a function called 'capitalize' that takes a string and returns a string with
+    //    only the first letter capitalized. Make sure it can take strings lowercase, UPPERCASE
+    //    or both.
+
+    // lol quite the jump from the previous two...
+
+    let capString = prompt("What's the string?", "");
+
+    alert( capitalize(capString) );
+
+    function capitalize(capString) {
+        // capitalize first letter
+        let firstLetter = capString.charAt(0);
+        // find length of total string
+        let restLength = capString.length;
+        // splice string starting at the second index
+        let restOfLetters = capString.substr(1, restLength - 1);
+        // return first letter uppercase, restofletters lowercase
+        return firstLetter.toUpperCase() + restOfLetters.toLowerCase();
+    }
+
+    // Stuff to use: toUpperCase(); toLowerCase(); 
+    // Easier to define 2 variables, 1 being the first letter and set to toUpperCase() and the
+    // remaining letters as toLowerCase(); will need to maybe use concat() or +; 
+    // Extracting string characters - use charAt() ?
+
+    // ===================================================================================
+    // 4. Write a function called 'lastLetter' that takes a string and returns the very last
+    //      letter of that string: lastLetter("abcd") should return "d"
+
+    let lastLetterString = prompt("What's the string?", "");
+
+    alert( lastLetter(lastLetterString) );
+
+    function lastLetter(lastLetterString) {
+        // determine length of string
+        let stringLength = lastLetterString.length;
+        // find last letter
+        let lastLetter = lastLetterString.substr(stringLength - 1, 1);
+        return lastLetter;
+
+    // ===================================================================================
+    // Solving Fizz Buzz
+
+    // Divide and Conquer - implement
+    
+    // subproblem one - user inputs a number:
+    let answer = parseInt(prompt("Please enter the number you would like to FizzBuzz up to: "));
+        // Note - parseInt returns the number from the input
+    
+    // subproblem two - loop from 1 to the entered number (using a for-loop):
+    for (let i = 1; i <= answer; i++) {
+        console.log(i);
+    }
+        // declare variable i and assign it 1 - aka the start of our loop (usually from 0, btw)
+        // 'i <= answer' is the condition - keep looping until i is greater than answer
+        // i++ tells loop to increment i by 1 each time
+        // if print 10, this will print 1 - 10 in the console
+    
+    // subproblem three - if current number divis. by 3, print 'Fizz':
+    for (let i = 1; i <= answer; i++) {
+        if (i % 3 === 0) {
+            console.log("Fizz");
+        } else {
+            console.log(i);
+        }
+    }
+    
+    // subproblem four - if current number divis. by 5, print 'Buzz':
+    for (let i = 1; i <= answer; i++) {
+        if (i % 3 === 0) {
+            console.log("Fizz");
+        } else if (i % 5 === 0) {
+            console.log("Buzz");
+        } else {
+            console.log(i);
+        }
+    }
+    
+    // subproblem five - if divisible by both, print 'FizzBuzz':
+    let answer = parseInt(prompt("Please enter the number you would like to FizzBuzz up to: "));
+    
+    for (let i = 1; i <= answer; i++) {
+        if (i % 3 === 0 && i % 5 === 0) {
+            console.log("FizzBuzz");
+        } else if (i % 3 === 0) {
+            console.log("Fizz");
+        } else if (i % 5 === 0) {
+            console.log("Buzz");
+        } else {
+            console.log(i);
+        }
+    }
+        // Note: moved the && condition to the front, because if the first was left and
+        // answered, it would have moved on to the next number, not next else if statement!
+
+    </code></pre>
             </section>
 
 <!-- Resources/Reference - link to all the articles -->
