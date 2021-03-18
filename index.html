@@ -547,8 +547,9 @@
     let text2 = 'World';
     let text3 = text1.concat(' ', text2);
     text3 // Hello World
-
-    // Same result as:
+                            </code></pre>
+                                This is the same as:
+                            <pre><code>
     text = 'Hello' + ' ' + 'World';
     text // Hello World 
                             </code></pre>
@@ -661,11 +662,13 @@
                             <li>
                                 Can be combined with <span>question mark/ternary operator</span> <code>?</code> for a simple true/false check:
                                 <pre><code>
+    // syntax:
     let result = condition ? value1 : value2;
 
     // example:
     let greeting = ( is Birthday ) ? 'happy birthday' : 'good morning';
-
+                                </code></pre>
+                                <pre><code>
     // theme chooser:
     const select = document.querySelector('select');
     const html = document.querySelector('html');
@@ -679,6 +682,8 @@
         ( select.value === 'black' ) ? update('black', 'white') : update('white', 'black');
     }
 
+                                </code></pre>
+                                <pre><code>
     // example:
 
     let machineActive = true;
@@ -692,7 +697,8 @@
     } else {
         machineResult = "Sorry, the machine is not on";
     }
-
+                                </code></pre>
+                                <pre><code>
     // example:
 
     ( pwd === 'cheese' ) ? pwdResult = "Welcome!" : pwdResult = "No luck!";
@@ -711,14 +717,16 @@
     // if age < 3 = true, say 'Hi, baby!'; if false, then if age < 18 is true, 
     // say 'Hello!', if false, then if age < 100, say 'Greetings!', if false, 
     // then say 'What an unusual age!'
-
+                                </code></pre>
+                                <pre><code>
     // another example:
     if(machineActive === true) {
         ( pwd === 'cheese' ) ? pwdResult = "Welcome!" : pwdResult = "No luck!";
     } else {
         machineResult = "Sorry, the machine is not on";
     }
-
+                                </code></pre>
+                                <pre><code>
     // how to write an else into ternary:
     let result;
 
@@ -750,7 +758,7 @@
         // block of code
     } else {
         // block of code 
-    }                    
+    }                   
     
     // example:
     if (hour < 18) {
@@ -784,7 +792,8 @@
     } else {
         greeting = "Good evening";
     }
-
+                                </code></pre>
+                                <pre><code> 
     // example several options:
     if (choice === 'sunny') {
         para.textContent = 'Wear shorts!';
@@ -839,7 +848,8 @@
                 para.textContent = '';
         }
     }
-
+                                </code></pre>
+                                <pre><code> 
     // example:
 
     let response;
@@ -871,7 +881,8 @@
     } else {
         response = 'The machine is turned off. Turn it on to process your score.';
     }
-
+                                </code></pre>
+                                <pre><code> 
     // note you can set one output to multiple cases:
 
     const month = new Date().getMonth();
@@ -928,7 +939,8 @@
     } else if (choice === 'sunny' && temperature >= 86) {
         para.textContent = 'It is ' + temperature + ' degrees outside - way too hot!';
     }
-
+                                </code></pre>
+                                <pre><code> 
         // Can combine as many as wanted:
     if ((x === 5 || y > 3 || z <= 10) && (loggedIn || userName === 'Steve')) {
         // run the code
@@ -1114,13 +1126,15 @@
                             To return a value, <span>return</span> can be any place in the <span>function</span>; when it is reached, the <span>function</span> stops and the value is returned. If empty or without a return, it is <span>undefined</span>.
                             <pre><code>
     /* basic example: */
+
     function sum(a, b) {
         return a + b;
     }
     
     let result = sum(1, 2);
     alert(result); // 3
-    
+                            </code></pre>
+                            <pre><code>     
     /* there may be multiple returns in a function: */
     
     function checkAge(age) {
@@ -1138,7 +1152,8 @@
     } else {
         alert( 'Access denied' );
     }
-    
+                            </code></pre>
+                            <pre><code>     
     /* can return without value, which exits the function immediately: */
     
     function showMovie(age) {
@@ -1248,7 +1263,8 @@
                         <pre><code>
     let from = Ann;
     function showMessage(from, text = "no text given") // Ann, no text given 
-
+                        </code></pre>
+                        <pre><code> 
     /* Can also be a more complex expression, only evaluated and assigned if param missing: */
 
     function showMessage(from, text = anotherFunction()) {
@@ -1283,7 +1299,8 @@
     }
     
     console.log(x); // causes error
-
+                        </code></pre>
+                        <pre><code> 
     /* valid - the variable is declared outside function, so global: */
 
     var x = "declared outside function";
@@ -1297,7 +1314,8 @@
 
     console.log("Outside function");
     console.log(x);
-
+                        </code></pre>
+                        <pre><code> 
     /* use functions inside functions to make code easier to understand and in-scope: */
 
     function myBigFunction() {
@@ -1319,7 +1337,8 @@
     function subFunction3(value) {
         console.log(value);
     }
-
+                        </code></pre>
+                        <pre><code> 
     /* outer variables - declared outside a function, can also be called in a function: */
 
     let userName = 'John';
@@ -1330,7 +1349,8 @@
     }
 
     showMessage(); // Hello, John
-
+                        </code></pre>
+                        <pre><code> 
     /* functions can modify outer variables as well: */
 
     let userName = 'John';
@@ -1346,7 +1366,8 @@
     showMessage(); // function call
 
     alert(userName); // Bob, since it was modified by the function call
-
+                        </code></pre>
+                        <pre><code> 
     /* if a same-named variable used both locally and outer, the outer variable is ignored: */
 
     let userName = 'John';
@@ -1380,6 +1401,7 @@
                             <pre><code>
     // syntax:
     var arrayName = [item1, item2, item3, ...];
+
     // can span multiple lines:
     var cars = [
         "Saab",
@@ -1391,8 +1413,8 @@
                             Note: avoid using <code>new</code> to create an array, if examples are seen; <code>new</code> can complicate the code and cause issues (e.g. potentially creating an array with undefined elements)!
                         </p>
                             <pre><code>
-        var points = new Array(40, 100); // creates array w/2 elements, 40 and 100
-        var points = new Array(40); // creates array with 40 undefined elements!
+    var points = new Array(40, 100); // creates array w/2 elements, 40 and 100
+    var points = new Array(40); // creates array with 40 undefined elements!
                             </code></pre>
                         </p>
                         <p>
@@ -1440,10 +1462,161 @@
                                 <code>var last = [fruits[fruits.length] - 1]; // access last element</code>
                             </li>
                             <li>
-                                Looping array elements using <span>for loop</span> or <code>Array.forEach()</code>; see /foundations-fundamentals-4.html for more~
+                                Convert arrays to strings:
+                                <pre><code>
+    //// converting arrays to strings:
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("demo").innerHTML = fruits.toString();
+    // result: Banana,Orange,Apple,Mango
+
+    // join() also joins all array elements into a string, but can specify separator:
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("demo").innerHTML = fruits.join(" * ");
+    // result: Banana * Orange * Apple * Mango
+                                </code></pre>
                             </li>
                             <li>
-                                <code>push()</code>, <code>length</code>, or directly (<code>array[5] = banana</code>) to add elements
+                                Looping array elements using <span>for loop</span>:
+                                    <pre><code>
+    var fruits, text, fLen, i; 
+    fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fLen = fruits.length;
+
+    text = "<ul>";
+        for (i = 0; i < fLen; i++) {
+            text += "<li>" + fruits[i] + "</li>";
+    }
+    text += "</ul>"; 
+                                    </code></pre> or <code>Array.forEach()</code>:
+                                    <pre><code>
+    var fruits, text;
+    fruits = ["Banana", "Orange", "Apple", "Mango"];
+    
+    text = "<ul>";
+    fruits.forEach(myFunction);
+    text += "</ul>";
+    
+    function myFunction(value) {
+        text += "<li>" + value + "</li>";
+    }                                   
+                                    </code></pre>
+                            </li>
+                            <li>
+                                Removing and adding elements:
+                                <br>
+                                <code>pop()</code> removes the last element from an array:
+                                <pre><code>
+    // pop() method removes the last element from an array:
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits.pop(); // removes last element "Mango" from fruits
+
+    // returns the value that was popped out (but still pops it out!)
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    var x = fruits.pop(); // the value of x is "Mango"
+                                </code></pre>
+                                <code>shift()</code> removes the first element:
+                                <pre><code>
+    // shift() removes first array and shifts all else down 1 index:
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits.shift(); // removes "Banana" from fruits, now fruits[0] is "Orange"
+
+    // shift() returns the string shifted out:
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    var x = fruits.shift(); // the value of x is "Banana"
+                                </code></pre>
+                                <code>unshift()</code> adds to an array at the beginning and reverse shifts other elements:
+                                <pre><code>
+    // unshift() adds to an array at the beginning and reverse shifts other elements
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits.unshift("Lemon");    // adds "Lemon" and makes "Banana" fruits[1]
+
+    // unshift() returns the new array length:
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    var x = fruits.unshift("Lemon");    // returns 5
+                                </code></pre>
+                                <code>push()</code> adds to the array at the end:
+                                <pre><code>
+    // Easiest way is push():
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits.push("Lemon"); // adds a new element to fruits[]
+
+    // push() method adds to an array - at the end
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits.push("Kiwi");    // adds "Kiwi" after "Mango" in fruits
+
+    // the push() method returns the new array length:
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    var x = fruits.push("Kiwi");    // the value of x is 5
+                                </code></pre>
+                                <pre><code>
+    // alternative to push() is .length:
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits[fruits.length] = "Lemon"; // remember, the .length is 1 more than listed in 
+    // the array, which is why this works to assign a new array as Lemon
+    
+    // Using high index numbers can create holes, so don't do this:
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits[6] = "Lemon";  
+                                </code></pre>
+                            </li>
+                            <li>
+                                <code>splice()</code> to cut out or add pieces of an array:
+                                <pre><code>
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits.splice(2, 0, "Lemon", "Kiwi");
+        // param 1 (2) defines position where new elements should be added in
+        // param 2 (0) defines how many elements should be removed
+        // param 3/4 (lemon, kiwi) are the new elements to be added
+
+    // splice() returns an array with the deleted items
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    var b = fruits.splice(2, 2, "Cheese");      // b is now an array
+
+    // using splice() to remove elements without 'holes' in the array:
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits.splice(0, 1);    // removes the first element of fruits
+        // param 1 defines position to add new elements
+        // param 2 defines how many to remove
+        // so in this case, position 0 is banana, which is removed
+                                </code></pre>
+                            </li>
+                            <li>
+                                <code>slice()</code>, on the other hand, takes out a piece into a new array, without changing the source array!
+                                <pre><code>
+    // slice() takes out a piece of an array into a new array:
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    var citrus = fruits.slice(1);   // makes a new array starting at index 1 (Orange)
+    // slice() does not change the source array!
+
+    // the parameter in slice() affects where it starts:
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    var appleMango = fruits.slice(2);   // only apple and mango in new array
+
+    // slice() can take 2 arguments (slice(1,3)) - where to start, where to end 
+    // it does not include the endpoint!
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    var citrus = fruits.slice(1, 3);    // citrus = ["Orange", "Apple"], no Mango
+                                </code></pre>
+                            </li>
+                            <li>
+                                <code>concat()</code> allows merging of arrays:
+                                <pre><code>
+    // Merging (concatenating) arrays - concat()
+    var myGirls = ["Cecilie", "Lone"];
+    var myBoys = ["Emil", "Tobias", "Linus"];
+    var myChildren = myGirls.concat(myBoys);    // concatenates myGirls and myBoys
+    // Note concat() does not change the existing arrays, just returns a new array
+
+    // concat() can take any number of array arguments:
+    var arr1 = ["Cecilie", "Lone"];
+    var arr2 = ["Emil", "Tobias"];
+    var arr3 = ["Robin", "Morgan"];
+    var myChildren = arr1.concat(arr2, arr3);   // concatenates arr1 with arr2 and arr3
+
+    // concat() can also take strings as arguments:
+    var arr1 = ["Emil", "Tobias", "Linus"];
+    var myChildren = arr1.concat("Peter");      // adds arr1 + Peter as myChildren
+                                </code></pre>
                             </li>
                         </ul>
 
@@ -1461,15 +1634,27 @@
                         Features of a loop: 
                         <ul>
                             <li>
-                                <span>Counter</span> - initialized with a certain value; is the starting point 
+                                <span>Counter</span>/<span>initializer</span> - initialized with a certain value; is the starting point, usually set to a number, and incremented/decremented to count the number of times the loop has run
                             </li>
                             <li>
-                                <span>Condition</span> - true/false to determine if the <span>loop</span> continues or stops.
+                                <span>Condition</span> - true/false to determine if the <span>loop</span> continues or stops, generally features a comparison operator.
                             </li>
                             <li>
-                                <span>Iterator</span> - generally <span>increments</span> (but can <span>decrement</span>) the <span>counter</span> by a small amount until the <span>condition</span> is no longer <code>true</code>
+                                <span>Iterator</span>/<span>final-expression</span> - generally <span>increments</span> (but can <span>decrement</span>) the <span>counter</span> by a small amount until the <span>condition</span> is no longer <code>true</code>; always run each time the <span>loop</span> has gone through a full <span>iteration</span>.
                             </li>
                         </ul>
+                        <pre><code>
+    // counter, condition, iterator; in pseudocode:
+    loop(food = 0; foodNeeded = 10) {
+        if (food >= foodNeeded) {
+            exit loop;
+            // we have enough food, let's go home
+        } else {
+            food += 2; // spend an hour collecting 2 more food
+            // loop will then run again
+        }
+    } 
+                        </code></pre>
                     </p>
                     <p>
                         Which should you use? Whichever you prefer, they're largely interchangeable; most sources recommend the <span>for loop</span>, as it's easiest to remember and neater.
@@ -1477,23 +1662,118 @@
                 <h2>For loop</h2>
                     <p>
                         <span>For loops</span> consist of an <span>initializer</span>, <span>condition</span>, and <span>final-expression</span>, which is always evaluated each time the <span>loop</span> goes through a full <span>iteration</span> - usually <span>increment</span> or <span>decrement</span> (e.g. <code>i++</code>).
+                        <pre><code>
+    // syntax:
+    for (initializer; condition; final-expression) {
+        // code to run
+    }
+
+    // example:
+    const cats = ['Bill', 'Jeff', 'Pete', 'Biggles', 'Jasmin'];
+    let info = 'My cats are called ';
+    const para = document.querySelector('p');
+
+    for (let i = 0; i < cats.length; i++) {
+        info += cats[i] + ', ';
+    }
+
+    para.textContent = info;
+        // returns My cats are called Bill, Jeff, Pete, Biggles, Jasmin, 
+
+    // note it ended in a comma + space? The fix:
+    for (let i = 0; i < cats.length; i++) {
+        if (i === cats.length - 1) {
+            info += 'and ' + cats[i] + '.';
+        } else {
+            info += cats[i] + ', ';
+        }
+    }
+                        </code></pre>
                     </p>
                     <h3>Exiting loops with <code>break</code></h3>
                         <p>
                             Use a <span>break</span> to exit a <span>loop</span> before all <span>iterations</span> are completed; will immediately exit the <span>loop</span> and move on to the next code. For when the <span>condition</span> must be checked in the middle of the <span>loop</span>, not the beginning or end.
                         </p>
+                        <pre><code>
+    let sum = 0;
+    while (true) {
+        let value = +prompt("Enter a number", '');
+        if (!value) break; // if it's not a value, exit the loop
+        sum += value;
+    }
+    alert( 'Sum: ' + sum );
+                        </code></pre>
                         <p>
                             For example, if you want to find contacts/phone numbers, loop until the number is found, then <span>break</span> to stop the <span>function</span> from <span>iterating</span> further.
+                            <pre><code>
+    // HTML: 
+    &lt;label for="search">Search by contact name: &lt;/label>
+    &lt;input id="search" type="text">
+    &lt;button>Search&lt;/button>
+
+    // variable definitions; array of contact info w/name and number separated by :
+    const contact = ['Chris:2232322', 'Sarah:3453456', 'Bill:7654322', 'Mary:9998769', 'Dianne:9384975'];
+    const para = document.querySelection('p');
+    const input = document.querySelector('input');
+    const btn = document.querySelector('button');
+
+    // event listener to btn ('button') to perform the code when pressed
+    btn.addEventListen('click', function() {
+        // search value from text input stored in searchName, toLowerCase for case-sensitivity
+        let searchName = input.value.toLowerCase();
+        input.value = '';
+        input.focus();
+        for (let i = 0; i < contacts.length; i++) {
+            // split current contact at the colon, storying in a new array called splitContact (in spots 1 and 2)
+            let splitContact = contacts[i].split(':');
+            // determine if searchName and the first part of the new array match:
+            if (splitContact[0].toLowerCase() === searchName) {
+                // if a match, combine with splitContact 1 (phone number):
+                para.textContent = splitContact[0] + '\'s number is ' + splitContact[1] + '.';
+                break;
+            } else {
+                // if no match, say so:
+                para.textContent = 'Contact not found.';
+            }
+        }
+    });
+                            </code></pre>
                         </p>
                     <h3>Skipping iterations with <code>continue</code></h3>
                         <p>
                             Similar concept as <span>break</span>, but rather than breaking out of the <span>loop</span>, it will skip to the next <span>iteration</span>.
+                            <pre><code>
+    // to see if it's odd
+    for (let i = 0; i < 10; i++) {
+        // if true, skip the remaining part of the body
+        if (i % 2 == 0) continue;
+        alert(i); // 1, 3, 5, 7, 9
+    }
+                            </code></pre>
                         </p>
                         <p>
                             Does not stop the whole <span>loop</span>, just the current <span>iteration</span> - and starts a new one (if the condition allows).
                         </p>
                         <p>
                             Example would be searching for square roots - if <code>!== sqRoot</code>, <code>continue</code> will start back at the <span>counter</span>.
+                            <pre><code>
+    // example looking for square roots or something:
+    let num = input.value;
+
+    for (let i = 1; i <= num; i++) {
+        // find square root of each number w/Math.sqrt(i), then check if an integer by
+        // testing if same as self when rounded down to nearest integer (Math.floor())
+        let sqRoot = Math.sqrt(i);
+        // if square root and rounded down do not equal one another, it means the square 
+        // root is not an integer, so we're not interested in it - so continue to the 
+        // next iteration of the loop
+        if (Math.floor(sqRoot) !== sqRoot) {
+            continue;
+        }
+        // if it is a square loop, skip the continue section and concatenate into paragraph:
+        para.textContent += i + ' ';
+    }
+                            </code></pre>
                         </p>
                     <h3><span>Labels</span> for <span>break</span>/<span>continue</span></h3>
                         <p>
@@ -1507,6 +1787,28 @@
 
     break labelName; // breaks to the outer loop 
                         </code></pre>
+                        <pre><code>
+    // example:
+    outer: for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            let input = prompt(`Value at coords (${i},${j})`, '');
+    
+            // if an empty string, or canceled, then break out of both loops:
+            if (!input) break outer; // break to 'outer' loop, since that's label name
+    
+            // do something with the value
+        }
+    }
+    alert('Done!');
+    
+    // label can also be on a separate line:
+    outer:
+    for (let i = 0; ...)
+    
+                        </code></pre>
+                        <p>
+                            Note <span>labels</span> don't allow jumping anywhere - can only jump above in a nested <span>loop</span>.
+                        </p>
                 <h2>while / do...while loop</h2>
                     <h3>While</h3>
                         <p>
@@ -1515,6 +1817,29 @@
                         <p>
                             Curly braces aren't required for a single-line body: <code>while (I) alert (i--);</code>
                         </p>
+                        <pre><code>
+    // syntax:
+
+    initializer
+    while (condition) {
+        // code to run
+
+        final-expression
+    }
+
+    // cats example re-written as a while loop:
+
+    let i = 0;
+    while (i < cats.length) {
+        if (i === cats.length - 1) {
+            info += 'and ' + cats[i] + '.';
+        } else {
+            info += cats[i] + ', ';
+        }
+
+        i++;
+    }
+                        </code></pre>
                     <h3>Do...while</h3>
                         <p>
                             Very similar to a <span>while loop</span>, but the <span>condition</span> comes after everything else, in parentheses, and preceded by <code>while</code>.
@@ -1525,6 +1850,28 @@
                         <p>
                             Reminder! Always executes the code at least once! before checking the <span>condition</span>. 
                         </p>
+                        <pre><code>
+    // Syntax:
+    initializer
+    do {
+        // code to run
+
+        final-expression
+    } while (condition)
+
+    // cat example in a do...while loop:
+    let i = 0;
+
+    do {
+        if (i === cats.length - 1) {
+            info += 'and ' + cats[i] + '.';
+        } else {
+            info += cats[i] + ', ';
+        }
+
+        i++;
+    } while (i < cats.length);
+                        </code></pre>
 
 
 
@@ -1548,10 +1895,13 @@
     // examples:
     const container = document.querySelector('#container'); 
         // selects #container div 
+
     console.dir(container.firstElementChild); 
         // select first child of #container => .display 
+
     const controls = document.querySelector('.controls'); 
         // select .controls div via class 
+
     console.dir(controls.previousElementSibling); 
         // selectors prior sibling => .display 
                     </code></pre>
@@ -1653,15 +2003,17 @@
     para.textContent = 'Hey I\'m red!'
     
     container.appendChild(para);
-    
-        // an &lt;h3> with lbue text that says "I'm a blue h3!"
+                    </code></pre>
+                    <pre><code>     
+        // an &lt;h3> with blue text that says "I'm a blue h3!"
     const h3 = document.createElement('h3');
     h3.classList.add('h3');
     h3.style.color = 'blue';
     h3.textContent = 'I\'m a blue h3!';
     
     container.appendChild(h3);
-
+                    </code></pre>
+                    <pre><code> 
         // uber combo:
     const insideContent = document.createElement('div');
     insideContent.classList.add('insideContent');
@@ -1695,6 +2047,7 @@
                                 <pre><code>
         // in the HTML file:                            
     &lt;button id="btn">Click Me&lt;/button>
+
         // in the JS file/script: 
     const btn = document.querySelector('#btn');
     btn.onclick = () => alert("Hello world");                            
@@ -1705,6 +2058,7 @@
                                 <pre><code>
         // in the HTML file:
     &lt;button id="btn">Click Me&lt;/button>
+
         // in the JS file/script: 
     const btn = document.querySelector('#btn');
     btn.addEventListener('click', () => {
@@ -1739,11 +2093,12 @@
         console.log(e);
     });
 
-    // more information example:
+    // example to get more information:
     btn.addEventListener('click', function (e) {
         console.log(e.target);
     });
-
+                        </code></pre>
+                        <pre><code> 
     // example to change the background:
     btn.addEventListener('click', function (e) {
         e.target.style.background = 'blue';
@@ -1911,12 +2266,11 @@
                 <p>Or should I put them in both - or is that just a waste of time and space?</p>
                 <h2>Website's problems:</h2>
                 <h3>Problem:</h3>
-                <pre><code>
     
 
-    // ===================================================================================
+    
     // from foundations-fundamentals-2.html :
-
+                <pre><code>
     /* a simple calendar
         Add conditional statement inside onchange handler function:
         1 Look at selected month (stored in 'choice')
@@ -1967,6 +2321,8 @@
 
     createCalendar(31,'January');
 
+</code></pre>
+<pre><code> 
     // ===================================================================================
     /* More color choices!
         Take ternary operator example, convert into a switch statement to apply more choices
@@ -2011,6 +2367,8 @@
         html.style.color = textColor;
     }
 
+</code></pre>
+<pre><code> 
     // ===================================================================================
     // conditionals 1:
 
@@ -2041,6 +2399,8 @@
     para1.textContent = response;
     section.appendChild(para1);
 
+</code></pre>
+<pre><code> 
     // ===================================================================================
     // conditionals 2:
 
@@ -2096,6 +2456,8 @@
     section.appendChild(para1);
     section.appendChild(para2);
 
+</code></pre>
+<pre><code> 
     // ===================================================================================
     // conditionals 3:
 
@@ -2147,6 +2509,8 @@
     section.appendChild(para1);
     section.appendChild(para2);
 
+</code></pre>
+<pre><code> 
     // ===================================================================================
     // conditionals 4:
 
@@ -2208,10 +2572,9 @@
         (login == '') ? 'No Login' :
         '';
 
-    ----
-
+</code></pre>
     // TOP Fundamentals Pt. 2 Practice:
-
+<pre><code> 
     // ===================================================================================
     // exercise 1:
 
@@ -2243,6 +2606,8 @@
 
     // Uses + unary to convert a non-number to a number (same as Number())
 
+</code></pre>
+<pre><code> 
     // ===================================================================================
     // exercise 2:
 
@@ -2275,6 +2640,8 @@
         }
     }
 
+</code></pre>
+<pre><code> 
     // ===================================================================================
     // exercise 3:
 
@@ -2309,15 +2676,17 @@
 
     module.exports = {a, b, c, d, e}
 
-    // ===================================================================================
-    // top fundamentals part 3:
-
+</code></pre>
+    // Top Fundamentals Pt 3: 
+<pre><code> 
     /* 1. Write a function called 'add7' that takes one number and returns that number + 7 */
 
     function add7(n) {
         return n + 7;
     }
 
+</code></pre>
+<pre><code> 
     // ===================================================================================
     // 2. Write a function called 'multiply' that takes 2 numbers and returns their product
 
@@ -2325,6 +2694,8 @@
         return a * b;
     }
 
+</code></pre>
+<pre><code> 
     // ===================================================================================
     // 3. Write a function called 'capitalize' that takes a string and returns a string with
     //    only the first letter capitalized. Make sure it can take strings lowercase, UPPERCASE
@@ -2352,6 +2723,8 @@
     // remaining letters as toLowerCase(); will need to maybe use concat() or +; 
     // Extracting string characters - use charAt() ?
 
+</code></pre>
+<pre><code> 
     // ===================================================================================
     // 4. Write a function called 'lastLetter' that takes a string and returns the very last
     //      letter of that string: lastLetter("abcd") should return "d"
@@ -2367,6 +2740,8 @@
         let lastLetter = lastLetterString.substr(stringLength - 1, 1);
         return lastLetter;
 
+</code></pre>
+<pre><code> 
     // ===================================================================================
     // Solving Fizz Buzz
 
@@ -2423,6 +2798,30 @@
         // answered, it would have moved on to the next number, not next else if statement!
 
     </code></pre>
+
+    Loops Active Learning 
+    <pre><code>
+    // print out a simple launch countdown to output box, from 10 to Blastoff
+
+    let i = 10;
+
+    // for each iteration, create a new paragraph and append to the output <div> (const output)
+    const output = document.querySelector('.output');
+    // need to be used somewhere inside the loop:
+    const para = document.createElement('p'); // creates a new paragraph
+    output.appendChild(para); // appends the paragraph to the output <div>
+    para.textContent = // makes the text inside the paragraph equal to whatever after =
+
+    // different iteration numbers require different text to be put in the paragraph
+        // need conditional statement and multiple 'para.textContent =' lines
+        // if the number is 10, print 'Countdown to 10' to the paragraph
+        // if the number is 0, print 'Blast off!' to the paragraph
+        // any other number, just print the number
+
+    // remember the iterator! but this example is counting down, so use i--
+    </code></pre>
+
+
             </section>
 
 <!-- Resources/Reference - link to all the articles -->
