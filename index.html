@@ -2148,39 +2148,167 @@
                     <p>
                         Can be created with <code>{}</code> and <span>properties</span> - in a <span>key: value</span> pair.
                         <span>Object literal</span> syntax is most common and is to create an <span>object</span> as it's defined - e.g. <code>const person = {};</code>
+                        <pre><code>
+    let user = {
+        name: "John",
+        age: 30
+    };  
+
+    // note the last property may end with a 'trailing' or 'hanging' comma:
+    let user = {
+        name: "John",
+        age: 30,
+    };
+                        </code></pre>
                     </p>
                     <p>
-                        <span>Square brackets</span> are more complex and powerful than <span>dot notation</span>, but more cumbersome and not as easy to use; use <span>dot notation</span> where property names are known and simple, else use <span>square brackets</span>.
+                        It's also possible to have multiword <span>property names</span>, but must be quoted:
+                        <pre><code>
+    let user = {
+        name: "John",
+        age: 30,
+        "likes birds": true
+    };
+                        </code></pre>
                     </p>
+                    <p>
+                        <span>Square brackets</span> are more complex and powerful than <span>dot notation</span>, but more cumbersome and not as easy to use; use <span>dot notation</span> where property names are known and simple, else use <span>square brackets</span>. For example, using multiword properties - <code>user['favorite animal'] = penguin;</code>
+                    </p> 
                     <p>
                         To test if a property exists, use <code>in</code> - no error if property doesn't exist, just <code>'undefined'</code>. <code>alert( "age" in user ); // true, user.age exists</code>.
+                        <pre><code>
+    let user = { 
+        name: "John", 
+        age: 30 
+    };
+
+    alert( "age" in user ); // true, user.age exists
+    alert( "blabla" in user ); // false, user.blabla doesn't exist 
+                        </code></pre>
                     </p>
+                <h3>Order in Object</h3>
                     <p>
                         How are things ordered inside an <span>object</span>? If we loop over one, we see <span>integer</span> properties are in numeric sort, and the rest in creation order.
                         <ul>
                             <li>
                                 Note that integer properties can be converted to string/integer without change: e.g. <code>"49"</code> can turn into <code>49</code>; but <code>"+49"</code> can 'cheat' the system, as it can't be converted to an integer!
+                                <pre><code>
+    let codes = {
+        "49" : "Germany",
+        "41" : "Switzerland",
+        "44" : "Great Britain",
+        // .. etc,
+        "1" : "USA"
+    };
+    
+    for (let code in codes) {
+        alert(code); // 1, 41, 44, 49
+    }                                
+                                </code></pre>
+                            </li>
+                            <li>
+                                Note the codes are in numeric order? To make in creation order with numbers, use <code>+</code>:
+                                <pre><code>
+    let codes = {
+        "+49" : "Germany",
+        "+41" : "Switzerland",
+        "+44" : "Great Britain",
+        // .. etc,
+        "+1" : "USA"
+    };
+
+    for (let code in codes) {
+        alert( +code ); // 49, 41, 44, 1 - NOTE THE + to remove the + in the name...
+    }
+                                </code></pre>
                             </li>
                         </ul>
                     </p>
+                <h3>Fruit Loops</h3>
                     <p>
                         Speaking of looping, the <code>for...in</code> loop is a special form that walks over all <span>keys</span> of an <span>object</span>, and can use any variable name in the syntax.
+                        <pre><code>
+    // syntax
+
+    for (key in object) {
+        // code 
+    }
+
+    // example
+
+    for (let key in user) {
+        alert( key ); // name, age, isAdmin 
+        alert( user[key] ); // John, 30, true 
+    }
+
+    // note can use other variable names instead of 'key'
+
+    // example
+
+    for (let code in codes) {
+        alert(code); 
+    }
+                        </code></pre>
+                    </p>
+                <h3>Functionation</h3>
+                    <p>
+                        <span>Functions</span> can be put into an <span>object</span> - AKA <span>methods</span>, and called using <span>dot notation</span> - <code>objectName.functionName()</code>
+                        <pre><code>
+    const person = {
+        name: ['Bob', 'Smith'],
+        age: 32,
+        gender: 'male',
+        interests: ['music', 'skiing'],
+        bio: function() {
+            alert(this.name[0] + ' ' + this.name[1] + ' is ' + this.age + ' years old. He likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
+        },
+        greeting: function() {
+            alert('Hi! I\'m ' + this.name[0] + '.');
+        }
+    };
+    
+    // call those functions with person.bio() and person.greeting()
+                        </code></pre>
                     </p>
                 <h2>Bracket Notation</h2>
                     <p>
                         Using <span>square brackets</span> to add/remove/get multiword properties:
                         <ul>
                             <li>
-                                <code>user["likes birds"] = true;</code>, etc.
+                                Setting info: <code>user["likes birds"] = true;</code>, etc. For <span>subnamespaces</span>: <code>person['name']['last'] = 'DesLauriers';</code>
                             </li>
                             <li>
-                                Calling info: <code>let age = 30;</code>, <code>user[age]; // 30</code>
+                                Calling info: <code>let user['age'] = 30;</code>, <code>user[age]; // 30</code>, etc.
+                            </li>
+                            <li>
+                                Deleting info: <code>delete user["favorite animal"]</code>, etc.
                             </li>
                             <li>
                                 Similar to an <span>array</span> (<code>name[1]</code>) - call using the <span>member name</span>: <code>person['age'];</code>, <code>person['name']</code>, etc.
                             </li>
                             <li>
                                 To set <span>object members</span>, <span>Bracket notation</span> is nice because you can create new <span>member names</span>, too: <code>// declare vars; person[myDataName] = myDataValue;</code>
+                            </li>
+                            <li>
+                                Also provides a way to use expressions, variables, etc. in ways that <span>dot notation</span> can't:
+                                <pre><code>
+    let question = 'enjoys beer';
+    
+    user[question] = true;
+
+    // access by variable:
+
+    let user = {
+        name: "John",
+        age: 30
+    };
+
+    let key = prompt("What do you want to know about the user?", "name");
+
+    alert( user[key] ); // John 
+
+    alert( user.key ); // undefined - doesn't work with dot notation!
+                                </code></pre>
                             </li>
                         </ul>
                     </p>
@@ -2194,9 +2322,98 @@
                     <p>
                         To set object members, simply <code>person.age = 45;</code>. <code>person.age; // 45</code>, etc.
                     </p>
+                    <p>
+                        To add, remove, read using <span>dot notation</span>:
+                        <pre><code>
+    // get property values of the object:
+    alert( user.name ); // John
+    alert( user.age ); // 30
+
+    // add a boolean value:
+    user.isAdmin = true;
+
+    // remove a value with delete operator:
+    delete user.age;
+                        </code></pre>
+                    </p>
                 <h2>'this'?</h2>
                     <p>
-                        We'll get more to this later, but ensures the code refers to the current <span>object</span>, in case value's context changes.
+                        Ensures the code refers to the current <span>object</span>, in case value's context changes. Refers to the current <span>object</span> code written inside.
+                        <pre><code>
+    greeting: function() {
+        alert('Hi! I\'m ' + this.name.first + '.');
+    }
+                        </code></pre>
+                    </p>
+                    <p>
+                        Helps ensure the correct values are used with a member's context changes - e.g. 2 different <code>person</code> <span>objects</span> may have different names.
+                        <pre><code>
+    const person1 = {
+        name: 'Chandler',
+        greeting: function() {
+            alert('Hi! I\'m ' + this.name + '.');
+        }
+    }
+    
+    const person2 = {
+        name: 'Gary',
+        greeting: function() {
+            alert('Hi! I\'m ' + this.name + '.');
+        }
+    }
+                        </code></pre>
+                    </p>
+                    <p>
+                        Note that they both use the exact same function, but <code>this</code> calls the relevant names.
+                    </p>
+                    
+                <h2>Computed Properties</h2>
+                    <p>
+                        Use <span>square brackets</span> in an <span>object literal</span> when creating an <span>object</span>, to alter depending on feedback. In this example, ask what fruit to buy as variable fruit, and add that choice as 5 units of that fruit to the bag. Apple: 5 is now part of bag.
+                        <pre><code>
+    let fruit = prompt("Which fruit to buy", "apple");
+
+    let bag = {
+        [fruit]: 5, // takes the input for fruit ('apple') and inputs into the brackets 
+    };
+
+    alert( bag.apple ); // 5
+                        </code></pre>
+                    </p>
+                <h2>Property Value Shorthand</h2>
+                    <p>
+                        Will often use existing <span>variables</span> as <span>values</span> for <span>property names</span>:
+                        <pre><code>
+    function makeUser(name, age) {
+        return {
+            name: name,
+            age: age,
+            // other properties 
+        };
+    }
+
+    let user = makeUser("John", 30);
+    alert(user.name); // John 
+                        </code></pre>
+                        <p>But can use the same <span>property</span> and <span>variable</span> names as shorthand:</p>
+                        <pre><code>
+    function makeUser(name, age) {
+        return {
+            name, 
+            age,
+            // other properties
+        };
+    }
+                        </code></pre>
+                        <p>
+                        And can use both at the same time:
+                        </p>
+                        <pre><code>
+    let user = {
+        name,   // same as name: name 
+        age: 30
+    };
+                        </code></pre>
                     </p>
             </section>
 
@@ -2805,11 +3022,11 @@
 
     let i = 10;
 
-    // for each iteration, create a new paragraph and append to the output <div> (const output)
+    // for each iteration, create a new paragraph and append to the output &lt;div> (const output)
     const output = document.querySelector('.output');
     // need to be used somewhere inside the loop:
     const para = document.createElement('p'); // creates a new paragraph
-    output.appendChild(para); // appends the paragraph to the output <div>
+    output.appendChild(para); // appends the paragraph to the output &lt;div>
     para.textContent = // makes the text inside the paragraph equal to whatever after =
 
     // different iteration numbers require different text to be put in the paragraph
@@ -2819,6 +3036,97 @@
         // any other number, just print the number
 
     // remember the iterator! but this example is counting down, so use i--
+    </code></pre>
+    // Tasks - Objects
+    <pre><code>
+    /* 
+        Write the code, one line for each action:
+        1. create an empty object 'user'
+        2. add the property 'name' with the value 'John'
+        3. add the property 'surname' with the value 'Smith'
+        4. change the value of the 'name' to 'Pete'
+        5. remove the property 'name' from the object
+    */ 
+
+    let user = {};
+    user.name = "John";
+    user.surname = "Smith";
+    user.name = "Pete";
+    delete user.name;
+    </code></pre>
+    <pre><code>
+    /* 
+        Check for emptiness - write the function isEmpty(obj) which returns 'true' if the
+        object has no properties, 'false' otherwise. Should work like this:
+        let schedule =  {};
+        alert( isEmpty(schedule) ); // true
+        schedule["8:30"] = "get up";
+        alert( isEmpty(schedule)  ); // false
+    */ 
+    
+    // loop over the object, and if there is a function it will return false
+    
+    function isEmpty(obj) {
+        for (let key in obj) {
+            // if the loop has started, there is a property!
+            return false;
+        }
+        return true;
+    }  
+    </code></pre>
+    <pre><code>
+    /* 
+        Sum object properties - we have an object storing salaries of our team:
+        let salaries = {
+            John: 100,
+            Ann: 160,
+            Pete: 130
+        }
+        Write the code to sum all salaries and store in the variable 'sum'
+        if 'salaries' is empty, then the result must be 0
+    */ 
+
+    let salaries = {
+        John: 100,
+        Ann: 160,
+        Pete: 130,
+    };
+
+    let sum = 0;
+    for (let key in salaries) {
+        sum += salaries[key];
+    }
+
+    alert(sum); // 390
+    </code></pre>
+    <pre><code>
+    /*
+        Multiply numeric property values by 2 - create a function multiplyNumeric(obj) that
+        multiplies all numeric property values of 'obj' by 2. For instance:
+        // before the call
+        let menu = {
+            width: 200,
+            height: 300,
+            title: "My menu"
+        }
+
+        multiplyNumeric(menu);
+
+        // after the call:
+        menu = {
+            width: 400,
+            height: 600,
+            title: "My menu"
+        }
+    */ 
+
+    function multiplyNumeric(obj) {
+        for (let key in obj) {
+            if (typeof obj[key] == 'number') {
+                obj[key] *= 2;
+            }
+        }
+    }
     </code></pre>
 
 
