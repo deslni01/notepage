@@ -2,7 +2,7 @@ Technical documentation page, used to condense and compile notes.
 
 # Things to add:
 
-- JavaScript page - *in progress*
+- ~~JavaScript page - part 1~~
 - ~~Syntax highlighter for `<code>` blocks - [prism?](https://prismjs.com/#basic-usage)~~
   - ~~Inline Color & Match braces~~
 - Linkable keywords? 
